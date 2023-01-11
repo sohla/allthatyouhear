@@ -10,7 +10,7 @@ export class Vec3 {
 }
 
 //-----------------------------------------------------------------------
-const orientationToVec3 = (orientation: DeviceOrientation, mul: number) => {
+export const orientationToVec3 = (orientation: DeviceOrientation, mul: number) => {
 
   var v = new Vec3()
 

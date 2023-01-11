@@ -1,13 +1,18 @@
-import React, {useContext, useEffect, useRef, useMemo, useState} from 'react';
+import React, {useEffect, useRef, useMemo, useState} from 'react';
 import './App.css';
 import { Title } from './Title';
 import { InfoIcon } from './Icons';
+import {PlayIcon } from './Icons';
 import {manifest} from './manifest';
-import AccessWebAudio, {GoButton, WebAudioContext} from './AccessWebAudio';
-import {OrientationContext, Vec3} from './AccessOrientation';
+// import {GoButton} from './AccessWebAudio';
+import {orientationToVec3} from './AccessOrientation';
+import {useDeviceOrientation} from './useDeviceOrientation';
+
 import { BaseLevel } from './BaseLevel';
 import { Level1 } from './Level1';
 import { Level2 } from './Level2';
+import {start} from 'tone';
+
 // import PlayersProgressBar from './PlayersProgressBar';
 //-----------------------------------------------------------------------
 //
@@ -17,8 +22,14 @@ const LevelPage = ( props:{
     levelID: string
   }) => {
 
-  const [webaudio,] = useContext(WebAudioContext);
-  const [ access ,setAccess, orientData] = useContext(OrientationContext);
+  // const [webaudio,] = useContext(WebAudioContext);
+  const [webaudio, setWebAudio] = useState(false)
+
+  const [access, setAccess] = useState(false)
+  const { orientation, requestAccess, revokeAccess } = useDeviceOrientation()
+  // const orientData = useRef(orientationToVec3(orientation!, 1))
+
+  // const [ access ,setAccess, orientData] = useContext(OrientationContext);
   const [isPlaying, setIsPlaying] = useState(false)
 
   const [introLoaded, setIntroLoaded] = useState(false)
@@ -136,18 +147,28 @@ const LevelPage = ( props:{
   //-----------------------------------------------------------------------
   useEffect( () => {
     if(webaudio) {
-      
       setAccess(true)
     }
   },[webaudio, setAccess])
 
   //-----------------------------------------------------------------------
   useEffect( () => {
+    if(access){
+      requestAccess()
+    }else{
+      revokeAccess()
+    }
+  },[access, requestAccess, revokeAccess])
+
+  //-----------------------------------------------------------------------
+  useEffect( () => {
+
     if(!access) return
-    let v = orientData as Vec3
+    let v = orientationToVec3(orientation!, 1)
     const title = levelNames.at(index) as string
     levels.current.get(title)?.onOrientationData(manifest.get(title), v)
-  },[access, orientData, index, levelNames])
+
+  },[access, orientation, index, levelNames])
 
   //-----------------------------------------------------------------------
   const RenderTracks = () => {
@@ -183,7 +204,39 @@ const LevelPage = ( props:{
       </div>
     )
   }
+
+  //-----------------------------------------------------------------------
+  const GoButton = (props: {
+    title: string,
+    onButton: () => void
+  }) => {
   
+    return (
+      <div className=" text-black font-bold w-full self-center p-12 text-2xl text-center">
+        <button onClick={ () => props.onButton() }>
+          <PlayIcon color="black"/>
+        </button>
+        <div>{props.title}</div>
+      </div>
+    )
+  }
+  //-----------------------------------------------------------------------
+  const RenderWebAudioButton = () => {
+    
+    const AccessButton = async () => {
+    
+      if(webaudio) return
+      await start()
+      setWebAudio(true)
+    }
+    
+    return (
+      <div>
+      <GoButton title='Tap to begin' onButton={ () => { AccessButton()} } />
+    </div>
+     
+    )
+  }
   //-----------------------------------------------------------------------
   const RenderNext = () => {
   return(
@@ -209,11 +262,12 @@ const LevelPage = ( props:{
       </div>
     )
   }
+  
   //-----------------------------------------------------------------------
   const RenderNoWebAudio = () => {
     return(
       <div>
-        { introLoaded ? <AccessWebAudio /> : <RenderLoading /> }
+        { introLoaded ? <RenderWebAudioButton /> : <RenderLoading /> }
       </div>
       )
     }

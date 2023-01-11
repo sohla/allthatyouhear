@@ -4,19 +4,19 @@ import {PlayIcon } from './Icons';
 
 
 //-----------------------------------------------------------------------
-export const WebAudioContext = createContext([{}, () => {}]);
+export const WebAudioContext = createContext([{}]);
 
 //-----------------------------------------------------------------------
 export const WebAudioProvider = (props: any) => {
-  const [webaudio, setWebAudio] = useState(false)
-  
+  const [webaudio,] = useState(false)
+
   useEffect( () => {
     console.log("wa:", webaudio)
     // Transport.start()
   },[webaudio])
   
   return (
-    <WebAudioContext.Provider value={[webaudio, setWebAudio]}>
+    <WebAudioContext.Provider value={[webaudio]}>
         {props.children}
     </WebAudioContext.Provider>
   );
@@ -40,13 +40,13 @@ export const GoButton = (props: {
 //-----------------------------------------------------------------------
 const AccessWebAudio = () => {
 
-  const [webaudio, setWebAudio] = useContext(WebAudioContext);
+  const [webaudio] = useContext(WebAudioContext);
 
   const AccessButton = async () => {
     
     if(webaudio) return
     await start()
-    setWebAudio(true)
+    // setWebAudio(true)
   }
   
   return (
