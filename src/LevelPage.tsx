@@ -323,7 +323,7 @@ const LevelPage = ( props:{
         
         <InfoIcon color={"black"}/> 
         
-     </div>
+     {/* </div> */}
 
 
     
