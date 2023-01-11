@@ -304,15 +304,15 @@ const LevelPage = ( props:{
     }
   
   //-----------------------------------------------------------------------
-  const title = levelNames.at(index) as string
-  const u = outroPlaying ? "url("+manifest.get(title)?.outroImg+")" :  "url("+manifest.get(title)?.backgroundImg+")"
+  // const title = levelNames.at(index) as string
+  // const u = outroPlaying ? "url("+manifest.get(title)?.outroImg+")" :  "url("+manifest.get(title)?.backgroundImg+")"
 
   return (
     <div className="h-screen bg-red" >
       {/* <div className="bg-cover bg-center fixed top-0 right-0 flex flex-col h-screen justify-center transition-opacity duration-1000 ease-out" style={{ backgroundImage: u, opacity:bg_class}}></div> */}
-      <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center transition-opacity duration-1000 ease-out opacity-0" style={{ backgroundImage: u, opacity:bg_class}}>
+      {/* <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center transition-opacity duration-1000 ease-out opacity-0" style={{ backgroundImage: u, opacity:bg_class}}> */}
         
-        <Title floor={String(manifest.get(title)?.floor)} title={String(manifest.get(title)?.title)}/>
+        {/* <Title floor={String(manifest.get(title)?.floor)} title={String(manifest.get(title)?.title)}/> */}
         
         { webaudio ? <RenderWebAudio /> : <RenderNoWebAudio /> }
         
