@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useMemo, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './App.css';
 import { Title } from './Title';
 import { InfoIcon } from './Icons';
@@ -39,9 +39,12 @@ const LevelPage = ( props:{
   const [outroPlaying, setOutroPlaying] = useState(false)
 
   const levels = useRef( new Map<string, BaseLevel>() )
-  const levelNames = useMemo( () => {
-    return ['level1','level2','level3','level4']
-  },[])
+  // const levelNames = useMemo( () => {
+  //   return ['level1','level2','level3','level4']
+  // },[])
+
+
+  const levelNames = useRef( new Array<string>())
 
 
   const [index, setIndex] = useState(0) 
@@ -51,6 +54,8 @@ const LevelPage = ( props:{
 
   //-----------------------------------------------------------------------
   useEffect( () => {
+
+    levelNames.current = ['level1','level2','level3','level4']
 
     levels.current.set('level1', new Level1(manifest.get('level1')))
     levels.current.set('level2', new Level2(manifest.get('level2')))
@@ -80,7 +85,7 @@ const LevelPage = ( props:{
 
       if(!isPlaying) return
       if(!introLoaded) return
-      const title = levelNames.at(index)!
+      const title = levelNames.current.at(index)!
       const level = manifest.get(title)
 
       levels.current.get(title)?.playIntro(level, () => {
@@ -134,7 +139,7 @@ const LevelPage = ( props:{
     useEffect( () => {
       if(index === 0) return // don't force load level 1
 
-      const title = levelNames.at(index) as string
+      const title = levelNames.current.at(index) as string
 
       console.log(index)
       levels.current.get(title)?.load(manifest.get(title), 
@@ -165,7 +170,7 @@ const LevelPage = ( props:{
 
     if(!access) return
     let v = orientationToVec3(orientation!, 1)
-    const title = levelNames.at(index) as string
+    const title = levelNames.current.at(index) as string
     levels.current.get(title)?.onOrientationData(manifest.get(title), v)
 
   },[access, orientation, index, levelNames])
@@ -173,7 +178,7 @@ const LevelPage = ( props:{
   //-----------------------------------------------------------------------
   const RenderTracks = () => {
 
-    const title = levelNames.at(index) as string
+    const title = levelNames.current.at(index) as string
     const text = manifest.get(title)?.tracksText
 
     return ( 
@@ -186,7 +191,7 @@ const LevelPage = ( props:{
   //-----------------------------------------------------------------------
   const RenderOutro = () => {
 
-    const title = levelNames.at(index) as string
+    const title = levelNames.current.at(index) as string
     const text = manifest.get(title)?.outroText
   
     return ( 
@@ -246,7 +251,7 @@ const LevelPage = ( props:{
         setIsPlaying( (f) => !f)
         
         if(index > 0) {
-          const title = levelNames.at(index - 1) as string
+          const title = levelNames.current.at(index - 1) as string
           levels.current.get(title)?.stopOutroSound(manifest.get(title))
         }
 
