@@ -137,7 +137,7 @@ const LevelPage = ( props:{
       if(index === 0) return // don't force load level 1
 
       console.log(levelNames, index)
-      
+
       const title = levelNames.at(index) as string
 
       console.log(index)
@@ -176,6 +176,8 @@ const LevelPage = ( props:{
 
   //-----------------------------------------------------------------------
   const RenderTracks = () => {
+
+    console.log(levelNames, index)
 
     const title = levelNames.at(index) as string
     const text = manifest.get(title)?.tracksText
