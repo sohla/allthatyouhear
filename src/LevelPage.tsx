@@ -36,19 +36,11 @@ const LevelPage = ( props:{
 
   const levels = useRef( new Map<string, BaseLevel>() )
 
-  // const levelNames = useMemo( () => {
-  //   return ['level1','level2','level3','level4']
-  // },[])
-
-
-  // const levelNames = useRef( new Array<string>())
-
-
   const [index, setIndex] = useState(0) 
-  // const [title, setTitle] = useState('level1')
     
   const bg_class = introLoaded ? "100%" : "0%" 
 
+  //-----------------------------------------------------------------------
   const getLevelTitle = (index: number) => {
     const levels = ['level1','level2','level3','level4']
     return levels[index]
@@ -87,7 +79,7 @@ const LevelPage = ( props:{
 
       if(!isPlaying) return
       if(!introLoaded) return
-      // const title = levelNames.current.at(index)!
+
       const title = getLevelTitle(index)
       const level = manifest.get(title)
 
@@ -142,7 +134,6 @@ const LevelPage = ( props:{
     useEffect( () => {
       if(index === 0) return // don't force load level 1
 
-      //const title = levelNames.current.at(index) as string
       const title = getLevelTitle(index)
 
       console.log(index)
@@ -174,7 +165,6 @@ const LevelPage = ( props:{
 
     if(!access) return
     let v = orientationToVec3(orientation!, 1)
-    // const title = levelNames.current.at(index) as string
     const title = getLevelTitle(index)
 
     levels.current.get(title)?.onOrientationData(manifest.get(title), v)
@@ -184,12 +174,7 @@ const LevelPage = ( props:{
   //-----------------------------------------------------------------------
   const RenderTracks = () => {
 
-
-    // const title = levelNames.current.at(index) as string
     const title = getLevelTitle(index)
-
-    // console.log(levelNames, index, manifest, title)
-
     const text = manifest.get(title)?.tracksText
 
     return ( 
@@ -202,9 +187,7 @@ const LevelPage = ( props:{
   //-----------------------------------------------------------------------
   const RenderOutro = () => {
 
-    // const title = levelNames.current.at(index) as string
     const title = getLevelTitle(index)
-
     const text = manifest.get(title)?.outroText
   
     return ( 
@@ -264,7 +247,6 @@ const LevelPage = ( props:{
         setIsPlaying( (f) => !f)
         
         if(index > 0) {
-          // const title = levelNames.current.at(index - 1) as string
           const title = getLevelTitle(index - 1)
 
           levels.current.get(title)?.stopOutroSound(manifest.get(title))
@@ -322,17 +304,16 @@ const LevelPage = ( props:{
       </div>
       )
     }
-  
   //-----------------------------------------------------------------------
-  // const title = levelNames.at(index) as string
-  // const u = outroPlaying ? "url("+manifest.get(title)?.outroImg+")" :  "url("+manifest.get(title)?.backgroundImg+")"
+  const title = getLevelTitle(index)
+  const u = outroPlaying ? "url("+manifest.get(title)?.outroImg+")" :  "url("+manifest.get(title)?.backgroundImg+")"
 
   return (
     <div className="h-screen bg-red" >
       {/* <div className="bg-cover bg-center fixed top-0 right-0 flex flex-col h-screen justify-center transition-opacity duration-1000 ease-out" style={{ backgroundImage: u, opacity:bg_class}}></div> */}
-      {/* <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center transition-opacity duration-1000 ease-out opacity-0" style={{ backgroundImage: u, opacity:bg_class}}> */}
+      <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center transition-opacity duration-1000 ease-out opacity-0" style={{ backgroundImage: u, opacity:bg_class}}>
         
-        {/* <Title floor={String(manifest.get(title)?.floor)} title={String(manifest.get(title)?.title)}/> */}
+        <Title floor={String(manifest.get(title)?.floor)} title={String(manifest.get(title)?.title)}/>
         
         { webaudio ? <RenderWebAudio /> : <RenderNoWebAudio /> }
         
@@ -343,7 +324,7 @@ const LevelPage = ( props:{
         
         <InfoIcon color={"black"}/> 
         
-     {/* </div> */}
+     </div>
 
 
     
