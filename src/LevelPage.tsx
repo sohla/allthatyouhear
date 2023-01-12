@@ -175,9 +175,11 @@ const LevelPage = ( props:{
   //-----------------------------------------------------------------------
   const RenderTracks = () => {
 
-    console.log(levelNames, index)
 
     const title = levelNames.current.at(index) as string
+
+    console.log(levelNames, index, manifest, title)
+
     const text = manifest.get(title)?.tracksText
 
     return ( 
