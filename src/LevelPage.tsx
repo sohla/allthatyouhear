@@ -41,7 +41,7 @@ const LevelPage = ( props:{
   // },[])
 
 
-  const levelNames = useRef( new Array<string>())
+  // const levelNames = useRef( new Array<string>())
 
 
   const [index, setIndex] = useState(0) 
@@ -49,10 +49,15 @@ const LevelPage = ( props:{
     
   const bg_class = introLoaded ? "100%" : "0%" 
 
+  const getLevelTitle = (index: number) => {
+    const levels = ['level1','level2','level3','level4']
+    return levels[index]
+  }
+
   //-----------------------------------------------------------------------
   useEffect( () => {
 
-    levelNames.current = ['level1','level2','level3','level4']
+    // levelNames.current = ['level1','level2','level3','level4']
 
     levels.current.set('level1', new Level1(manifest.get('level1')))
     levels.current.set('level2', new Level2(manifest.get('level2')))
@@ -82,7 +87,8 @@ const LevelPage = ( props:{
 
       if(!isPlaying) return
       if(!introLoaded) return
-      const title = levelNames.current.at(index)!
+      // const title = levelNames.current.at(index)!
+      const title = getLevelTitle(index)
       const level = manifest.get(title)
 
       levels.current.get(title)?.playIntro(level, () => {
@@ -112,7 +118,7 @@ const LevelPage = ( props:{
         })
       })
 
-    },[isPlaying, index, levelNames, introLoaded])
+    },[isPlaying, index, introLoaded])
     
     //-----------------------------------------------------------------------
     useEffect( () => {
@@ -136,7 +142,8 @@ const LevelPage = ( props:{
     useEffect( () => {
       if(index === 0) return // don't force load level 1
 
-      const title = levelNames.current.at(index) as string
+      //const title = levelNames.current.at(index) as string
+      const title = getLevelTitle(index)
 
       console.log(index)
       levels.current.get(title)?.load(manifest.get(title), 
@@ -144,7 +151,7 @@ const LevelPage = ( props:{
         () => {setTracksLoaded(true)},
         () => {setOutroLoaded(true)},
       )
-    },[index, levelNames])
+    },[index])
  
   //-----------------------------------------------------------------------
   useEffect( () => {
@@ -167,18 +174,21 @@ const LevelPage = ( props:{
 
     if(!access) return
     let v = orientationToVec3(orientation!, 1)
-    const title = levelNames.current.at(index) as string
+    // const title = levelNames.current.at(index) as string
+    const title = getLevelTitle(index)
+
     levels.current.get(title)?.onOrientationData(manifest.get(title), v)
 
-  },[access, orientation, index, levelNames])
+  },[access, orientation, index])
 
   //-----------------------------------------------------------------------
   const RenderTracks = () => {
 
 
-    const title = levelNames.current.at(index) as string
+    // const title = levelNames.current.at(index) as string
+    const title = getLevelTitle(index)
 
-    console.log(levelNames, index, manifest, title)
+    // console.log(levelNames, index, manifest, title)
 
     const text = manifest.get(title)?.tracksText
 
@@ -192,7 +202,9 @@ const LevelPage = ( props:{
   //-----------------------------------------------------------------------
   const RenderOutro = () => {
 
-    const title = levelNames.current.at(index) as string
+    // const title = levelNames.current.at(index) as string
+    const title = getLevelTitle(index)
+
     const text = manifest.get(title)?.outroText
   
     return ( 
@@ -252,7 +264,9 @@ const LevelPage = ( props:{
         setIsPlaying( (f) => !f)
         
         if(index > 0) {
-          const title = levelNames.current.at(index - 1) as string
+          // const title = levelNames.current.at(index - 1) as string
+          const title = getLevelTitle(index - 1)
+
           levels.current.get(title)?.stopOutroSound(manifest.get(title))
         }
 
