@@ -4,8 +4,7 @@ import { Title } from './Title';
 import { InfoIcon } from './Icons';
 import {PlayIcon } from './Icons';
 import {manifest} from './manifest';
-// import {GoButton} from './AccessWebAudio';
-import {orientationToVec3} from './AccessOrientation';
+import {orientationToVec3} from './orientationUtils';
 import {useDeviceOrientation} from './useDeviceOrientation';
 
 import { BaseLevel } from './BaseLevel';

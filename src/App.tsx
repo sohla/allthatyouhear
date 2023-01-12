@@ -4,8 +4,7 @@ import { Routes, Route, Outlet, Link} from "react-router-dom";
 import {Helmet} from "react-helmet";
 //-----------------------------------------------------------------------
 
-import { WebAudioProvider } from "./AccessWebAudio";
-import { OrientationProvider } from './AccessOrientation';
+// import { OrientationProvider } from './AccessOrientation';
 
 
 import LevelPage from './LevelPage'
@@ -22,15 +21,13 @@ export default function App() {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Helmet>
 
-      <OrientationProvider>
-        <WebAudioProvider>
+      {/* <OrientationProvider> */}
           <Routes>
-          <Route path="levelPage1" element={<LevelPage levelID='level1'/>} /> 
+            <Route path="levelPage1" element={<LevelPage levelID='level1'/>} /> 
 
             <Route path="*" element={<Home />} />
           </Routes>
-        </WebAudioProvider>
-      </OrientationProvider>
+      {/* </OrientationProvider> */}
       </div>
   );
 }

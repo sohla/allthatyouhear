@@ -1,6 +1,6 @@
 import { levelType } from './manifest';
 import { Players } from './Players'
-import {Vec3} from './AccessOrientation';
+import {Vec3} from './orientationUtils';
 import {Transport } from 'tone';
 
 //-----------------------------------------------------------------------
