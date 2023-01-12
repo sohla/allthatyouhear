@@ -18,8 +18,8 @@ export type levelType = {
 export const manifest: Map<string, levelType> = new Map([
   ['level1', {
       floor: 'All That You Hear',
-      title: '1',
-      backgroundImg: '/img/noImage.jpg',
+      title: '',
+      backgroundImg: '/img/bush.png',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+1.mp3',
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Level+2+Introduction.mp3',
       introText: 'intro',
@@ -45,7 +45,7 @@ export const manifest: Map<string, levelType> = new Map([
     outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+3.mp3',
     outroText: 'outro',
     outroImg: '/img/stairs.jpg',
-    tracksText: 'tracks',
+    tracksText: 'text description',
     tracks: [
       'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+A.mp3',
       'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+B.mp3',
