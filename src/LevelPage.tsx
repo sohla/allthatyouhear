@@ -212,7 +212,7 @@ const LevelPage = ( props:{
   }) => {
   
     return (
-      <div className="text-black pt-44 font-bold w-full self-center text-2xl text-center">
+      <div className="fixed  text-black bottom-32 font-bold w-full self-center text-2xl text-center">
         <div className=" flex justify-center items-center "
             // onMouseDown={e => { console.log("mouse down") }}
             onTouchEnd={ () => props.onButton() }
