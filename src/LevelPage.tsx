@@ -178,7 +178,7 @@ const LevelPage = ( props:{
     const text = manifest.get(title)?.tracksText
 
     return ( 
-      <div className="p-6 text-black font-bold text-2xl w-full self-center text-center">
+      <div className="bg-pink-400 p-6 text-black font-bold text-2xl w-full self-center text-center">
         {text}
       </div>
     )
@@ -191,7 +191,7 @@ const LevelPage = ( props:{
     const text = manifest.get(title)?.outroText
   
     return ( 
-      <div className=" p-6 text-black font-bold text-2xl w-full self-center text-center">
+      <div className="bg-pink-400 p-6 text-black font-bold text-2xl w-full self-center text-center">
         {text}
       </div>
     )
@@ -213,7 +213,7 @@ const LevelPage = ( props:{
   }) => {
   
     return (
-      <div className=" text-black font-bold w-full self-center p-12 text-2xl text-center">
+      <div className=" bg-red-600 bg-opacity-50 text-black font-bold w-full self-center p-12 text-2xl text-center">
         <button onClick={ () => props.onButton() }>
           <PlayIcon color="black"/>
         </button>

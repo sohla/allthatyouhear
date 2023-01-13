@@ -17,8 +17,8 @@ export class Level2 extends BaseLevel{
 
     super.playIntro(level, onIntroEnded)
 
-    this.players.playIntroSound(level, {playbackRate:1, volume:-5, offset:0, fade:0, loop: false})
-    this.players.playIntroVO(level, {playbackRate:1, volume:-6, offset:2, fade:0, loop: false})
+    this.players.playIntroSound(level, {playbackRate:3, volume:-5, offset:0, fade:0, loop: false})
+    this.players.playIntroVO(level, {playbackRate:3, volume:-6, offset:2, fade:0, loop: false})
   }
 
   
@@ -36,7 +36,7 @@ export class Level2 extends BaseLevel{
         // this.players.playSound(player, {playbackRate:1, volume:0, offset:1, fade:0})
         // or fully custom playback
         player.set({
-          playbackRate: 1,
+          playbackRate: 20,
           volume: 0,
           fadeIn: 0,
           fadeOut: 0,
@@ -51,27 +51,29 @@ playOutro(level: levelType | undefined, onOutroEnded: () => void){
     
     super.playOutro(level, onOutroEnded)
   
-    this.players.playOutroSound(level, {playbackRate:1, volume:-5, offset:0, fade:2, loop: true})
-    this.players.playOutroVO(level, {playbackRate:1, volume:-4, offset:0, fade:0, loop: false})
+    this.players.playOutroSound(level, {playbackRate:3, volume:-5, offset:0, fade:2, loop: true})
+    this.players.playOutroVO(level, {playbackRate:3, volume:-4, offset:0, fade:0, loop: false})
   }
 
   onOrientationData(level: levelType | undefined, v: Vec3){
  
-    // if(level){
+    if(level){
+
+      console.log(level.tracks)
+
+      const t1 = level.tracks.at(0)
+      const t2 = level.tracks.at(1)
       
-    //   const t1 = level.tracks.at(0)
-    //   const t2 = level.tracks.at(1)
-      
-    //   if(t1 && t2){
-    //     const p1 = this.players.tonePlayers.get(t1) 
-    //     const p2 = this.players.tonePlayers.get(t2) 
+      if(t1 && t2){
+        const p1 = this.players.tonePlayers.get(t1) 
+        const p2 = this.players.tonePlayers.get(t2) 
         
-    //     if(p1&&p2){
-    //       p1.volume.value = -( (1-v.y ) * 90) 
-    //       p2.volume.value = -( (v.y) * 90) + 9
-    //     }
-    //   }
-    // }
+        if(p1&&p2){
+          p1.volume.value = -( (1-v.y ) * 90) 
+          p2.volume.value = -( (v.y) * 90) + 9
+        }
+      }
+    }
       
   }
 
