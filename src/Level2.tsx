@@ -58,7 +58,7 @@ playOutro(level: levelType | undefined, onOutroEnded: () => void){
   onOrientationData(level: levelType | undefined, v: Vec3){
  
     if(level){
-      console.log(level.tracks[0])
+      console.log(">",level.tracks[0])
       const t1 = level.tracks[0]
       const t2 = level.tracks[1]
 

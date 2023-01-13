@@ -69,8 +69,8 @@ export const useDeviceOrientation = (): UseDeviceOrientationData => {
       let permission: PermissionState;
       try {
         permission = await (DeviceOrientationEvent as any).requestPermission();
-      } catch (err) {
-        // setError(err);!!!
+      } catch (err: any) {
+        setError(err);
         return false;
       }
       if (permission !== 'granted') {

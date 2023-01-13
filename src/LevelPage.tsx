@@ -24,7 +24,7 @@ const LevelPage = ( props:{
   const [webaudio, setWebAudio] = useState(false)
 
   const [access, setAccess] = useState(false)
-  const { orientation, requestAccess, revokeAccess } = useDeviceOrientation()
+  const { orientation, requestAccess, revokeAccess, error } = useDeviceOrientation()
 
   const [isPlaying, setIsPlaying] = useState(false)
 
@@ -56,7 +56,7 @@ const LevelPage = ( props:{
     levels.current.set('level3', new Level2(manifest.get('level3')))
     levels.current.set('level4', new Level2(manifest.get('level4')))
 
-    console.log("-->",manifest.get('level1')?.title)
+    // console.log("-->",manifest.get('level1')?.title)
 
     // !!!! DD BACK FOR LEVEL 1
     levels.current.get('level1')?.load(manifest.get('level1'), 
@@ -136,7 +136,7 @@ const LevelPage = ( props:{
 
       const title = getLevelTitle(index)
 
-      console.log(index)
+      console.log(":",index)
       levels.current.get(title)?.load(manifest.get(title), 
         () => {setIntroLoaded(true)},
         () => {setTracksLoaded(true)},
@@ -159,7 +159,11 @@ const LevelPage = ( props:{
       revokeAccess()
     }
   },[access, requestAccess, revokeAccess])
-
+  //-----------------------------------------------------------------------
+  useEffect( () => {
+    if(!error) return
+    console.log("access err:",error?.message)
+  },[error])
   //-----------------------------------------------------------------------
   useEffect( () => {
 
