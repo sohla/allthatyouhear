@@ -234,7 +234,9 @@ const LevelPage = ( props:{
       if(webaudio) return
       await start()
       setWebAudio(true)
-      setAccess(true)
+      requestAccess()
+
+      // setAccess(true)
 
     }
     
