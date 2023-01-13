@@ -14,7 +14,7 @@ export class Level1 extends BaseLevel{
   playIntro(level: levelType | undefined, onIntroEnded: () => void){
 
     // this.players.playIntroSound(level, {playbackRate:0.5, volume:0, offset:0, fade:0})
-    this.players.playIntroVO(level, {playbackRate:20, volume:-5, offset:0, fade:0, loop: false})
+    this.players.playIntroVO(level, {playbackRate:1, volume:-5, offset:0, fade:0, loop: false})
 
     level && super.playIntro(level, onIntroEnded)
   }

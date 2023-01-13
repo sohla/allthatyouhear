@@ -45,7 +45,7 @@ export const manifest: Map<string, levelType> = new Map([
     outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+3.mp3',
     outroText: 'outro',
     outroImg: '/img/stairs.jpg',
-    tracksText: 'Move through the corridors to discover layers of sound.',
+    tracksText: 'Welcome to the Second Floor. Move through the corridors to discover layers of sound.',
     tracks: [
       'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+A.mp3',
       'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+B.mp3',
