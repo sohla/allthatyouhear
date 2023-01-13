@@ -218,9 +218,19 @@ const LevelPage = ( props:{
   
     return (
       <div className=" bg-red-600 bg-opacity-50 text-black font-bold w-full self-center p-12 text-2xl text-center">
-        <button onClick={ () => props.onButton() }>
+        {/* <button className=" bg-yellow-600 bg-opacity-50" onClick={ () => props.onButton() }>
           <PlayIcon color="black"/>
-        </button>
+        </button> */}
+        <div className=" bg-yellow-600 bg-opacity-50  w-full  text-center content-center "
+        onMouseDown={e => {
+          console.log("mouse down")
+        }}
+        onTouchStart={e => {
+          console.log("tap start")
+        }}
+        >
+          <PlayIcon color="black"/>
+        </div>
         <div>{props.title}</div>
       </div>
     )
