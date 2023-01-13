@@ -155,6 +155,7 @@ const LevelPage = ( props:{
   useEffect( () => {
     
     if(access){
+      console.log("ASASAS")
       requestAccess()
     }else{
       revokeAccess()

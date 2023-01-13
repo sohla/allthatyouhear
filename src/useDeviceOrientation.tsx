@@ -63,15 +63,16 @@ export const useDeviceOrientation = (): UseDeviceOrientationData => {
       setError(new Error('Device orientation event is not supported by your browser'));
       return false;
     }
-
+    console.log("xxx")
     if (
-
-      (DeviceOrientationEvent as unknown as DeviceOrientationEventiOS).requestPermission
-      && typeof (DeviceMotionEvent as unknown as DeviceOrientationEventiOS).requestPermission === 'function'
+      (DeviceMotionEvent as any).requestPermission
+      && typeof (DeviceMotionEvent as any).requestPermission === 'function'
     ) {
       let permission: PermissionState;
+      console.log("calling requestPermission")
       try {
-        permission = await (DeviceOrientationEvent as any).requestPermission();
+        permission = await (DeviceMotionEvent as any).requestPermission();
+        console.log(permission)
       } catch (err: any) {
         setError(err);
         return false;
