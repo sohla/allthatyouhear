@@ -236,13 +236,15 @@ const LevelPage = ( props:{
       if(webaudio) return
       await start()
       setWebAudio(true)
-      setAccess(true)
 
     }
     
     return (
       <div>
-      <GoButton title='Tap to begin' onButton={ () => { AccessButton()} } />
+      <GoButton title='Tap to begin' onButton={ () => { 
+            setAccess(true)
+            AccessButton()
+      } } />
     </div>
      
     )
