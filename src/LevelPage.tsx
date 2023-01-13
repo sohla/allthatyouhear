@@ -182,7 +182,7 @@ const LevelPage = ( props:{
     const text = manifest.get(title)?.tracksText
 
     return ( 
-      <div className="bg-pink-400 p-6 text-black font-bold text-2xl w-full self-center text-center">
+      <div className="bg-pink-400 bg-opacity-60 p-6 text-black font-bold text-2xl w-full self-center text-center">
         {text}
       </div>
     )
@@ -195,7 +195,7 @@ const LevelPage = ( props:{
     const text = manifest.get(title)?.outroText
   
     return ( 
-      <div className="bg-pink-400 p-6 text-black font-bold text-2xl w-full self-center text-center">
+      <div className="bg-pink-400 bg-opacity-60 p-6 text-black font-bold text-2xl w-full self-center text-center">
         {text}
       </div>
     )
@@ -217,17 +217,10 @@ const LevelPage = ( props:{
   }) => {
   
     return (
-      <div className=" bg-red-600 bg-opacity-50 text-black font-bold w-full self-center p-12 text-2xl text-center">
-        {/* <button className=" bg-yellow-600 bg-opacity-50" onClick={ () => props.onButton() }>
-          <PlayIcon color="black"/>
-        </button> */}
-        <div className=" bg-yellow-600 bg-opacity-50  w-full  text-center content-center "
-        onMouseDown={e => {
-          console.log("mouse down")
-        }}
-        onTouchStart={e => {
-          console.log("tap start")
-        }}
+      <div className=" bg-red-600 bg-opacity-50 text-black font-bold w-full self-center text-2xl text-center">
+        <div className=" bg-yellow-600 bg-opacity-50 flex justify-center items-center "
+            // onMouseDown={e => { console.log("mouse down") }}
+            onTouchEnd={ () => props.onButton() }
         >
           <PlayIcon color="black"/>
         </div>
