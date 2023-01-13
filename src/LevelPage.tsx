@@ -145,11 +145,11 @@ const LevelPage = ( props:{
     },[index])
  
   //-----------------------------------------------------------------------
-  useEffect( () => {
-    if(webaudio) {
-      setAccess(true)
-    }
-  },[webaudio, setAccess])
+  // useEffect( () => {
+  //   if(webaudio) {
+  //     setAccess(true)
+  //   }
+  // },[webaudio, setAccess])
 
   //-----------------------------------------------------------------------
   useEffect( () => {
@@ -233,6 +233,7 @@ const LevelPage = ( props:{
       if(webaudio) return
       await start()
       setWebAudio(true)
+      setAccess(true)
     }
     
     return (
