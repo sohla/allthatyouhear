@@ -59,10 +59,10 @@ playOutro(level: levelType | undefined, onOutroEnded: () => void){
  
     if(level){
 
-      console.log(level.tracks)
+      const tracks = level.tracks as Array<string>
 
-      const t1 = level.tracks.at(0)
-      const t2 = level.tracks.at(1)
+      const t1 = tracks.at(0)
+      const t2 = tracks.at(1)
       
       if(t1 && t2){
         const p1 = this.players.tonePlayers.get(t1) 
