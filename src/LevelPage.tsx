@@ -153,6 +153,7 @@ const LevelPage = ( props:{
 
   //-----------------------------------------------------------------------
   useEffect( () => {
+    
     if(access){
       requestAccess()
     }else{
@@ -234,6 +235,7 @@ const LevelPage = ( props:{
       await start()
       setWebAudio(true)
       setAccess(true)
+
     }
     
     return (
