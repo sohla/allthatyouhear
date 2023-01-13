@@ -36,7 +36,7 @@ export class Level2 extends BaseLevel{
         // this.players.playSound(player, {playbackRate:1, volume:0, offset:1, fade:0})
         // or fully custom playback
         player.set({
-          playbackRate: 20,
+          playbackRate: 1,
           volume: 0,
           fadeIn: 0,
           fadeOut: 0,
@@ -51,8 +51,8 @@ playOutro(level: levelType | undefined, onOutroEnded: () => void){
     
     super.playOutro(level, onOutroEnded)
   
-    this.players.playOutroSound(level, {playbackRate:3, volume:-5, offset:0, fade:2, loop: true})
-    this.players.playOutroVO(level, {playbackRate:3, volume:-4, offset:0, fade:0, loop: false})
+    this.players.playOutroSound(level, {playbackRate:1, volume:-5, offset:0, fade:2, loop: true})
+    this.players.playOutroVO(level, {playbackRate:1, volume:-4, offset:0, fade:0, loop: false})
   }
 
   onOrientationData(level: levelType | undefined, v: Vec3){

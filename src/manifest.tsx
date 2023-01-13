@@ -54,26 +54,7 @@ export const manifest: Map<string, levelType> = new Map([
     ]
 }
   ],
-  ['level3', {
-    floor: 'Level',
-    title: '3',
-    backgroundImg: '/img/level2.jpg',
-    introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+2.mp3',
-    introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Welcome+to+the+second+floor.mp3',
-    introText: 'intro',
-    outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
-    outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+3.mp3',
-    outroText: 'outro',
-    outroImg: '/img/stairs.jpg',
-    tracksText: 'Move through the corridors to discover layers of sound.',
-    tracks: [
-      'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+A.mp3',
-      'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+B.mp3',
-    
-
-    ]
-}
-  ],
+  
  
 ]);
 
