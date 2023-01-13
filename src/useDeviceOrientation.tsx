@@ -9,6 +9,9 @@ import { useCallback, useEffect, useState } from 'react';
 //   return ref.current; //in the end, return the current ref value.
 // }
 // export default usePrevious;
+interface DeviceOrientationEventiOS extends DeviceOrientationEvent {
+  requestPermission?: () => Promise<'granted' | 'denied'>;
+}
 
 export type DeviceOrientation = {
   alpha: number | null
@@ -63,8 +66,8 @@ export const useDeviceOrientation = (): UseDeviceOrientationData => {
 
     if (
 
-      (DeviceOrientationEvent as any).requestPermission
-      && typeof (DeviceMotionEvent as any).requestPermission === 'function'
+      (DeviceOrientationEvent as unknown as DeviceOrientationEventiOS).requestPermission
+      && typeof (DeviceMotionEvent as unknown as DeviceOrientationEventiOS).requestPermission === 'function'
     ) {
       let permission: PermissionState;
       try {
