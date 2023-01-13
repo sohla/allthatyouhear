@@ -59,16 +59,16 @@ playOutro(level: levelType | undefined, onOutroEnded: () => void){
  
     if(level){
 
-      const tracks = level.tracks as Array<string>
-
-      const t1 = tracks.at(0)
-      const t2 = tracks.at(1)
+      const t1 = level.tracks[0]
+      const t2 = level.tracks[1]
       
       if(t1 && t2){
+
         const p1 = this.players.tonePlayers.get(t1) 
         const p2 = this.players.tonePlayers.get(t2) 
         
         if(p1&&p2){
+
           p1.volume.value = -( (1-v.y ) * 90) 
           p2.volume.value = -( (v.y) * 90) + 9
         }
