@@ -144,13 +144,6 @@ const LevelPage = ( props:{
     },[index])
  
   //-----------------------------------------------------------------------
-  // useEffect( () => {
-  //   if(webaudio) {
-  //     setAccess(true)
-  //   }
-  // },[webaudio, setAccess])
-
-  //-----------------------------------------------------------------------
   useEffect( () => {
     
     if(access){
@@ -159,11 +152,13 @@ const LevelPage = ( props:{
       revokeAccess()
     }
   },[access, requestAccess, revokeAccess])
+
   //-----------------------------------------------------------------------
   useEffect( () => {
     if(!error) return
     console.log("access err:",error?.message)
   },[error])
+  
   //-----------------------------------------------------------------------
   useEffect( () => {
 
@@ -204,7 +199,7 @@ const LevelPage = ( props:{
   const RenderPlaying = () => {
     return (
       <div className="bg-black bg-opacity-0 text-black font-bold w-full self-center text-2xl text-center">
-        {/* <div className="bg-yellow-500  h-60 opacity-50 bg-[url('../public/img/MovingPhone_SlowBlack.gif')] bg-contain bg-center bg-no-repeat"></div> */}
+        {(index > 0) ? <div className="bg-yellow-500  h-60 opacity-50 bg-[url('../public/img/MovingPhone_SlowBlack.gif')] bg-contain bg-center bg-no-repeat"></div> : <div></div>}
         { outroPlaying ? <RenderOutro /> : <RenderTracks /> }
       </div>
     )
@@ -217,14 +212,14 @@ const LevelPage = ( props:{
   }) => {
   
     return (
-      <div className=" bg-red-600 bg-opacity-50 text-black font-bold w-full self-center text-2xl text-center">
-        <div className=" bg-yellow-600 bg-opacity-50 flex justify-center items-center "
+      <div className="text-black pt-44 font-bold w-full self-center text-2xl text-center">
+        <div className=" flex justify-center items-center "
             // onMouseDown={e => { console.log("mouse down") }}
             onTouchEnd={ () => props.onButton() }
         >
           <PlayIcon color="black"/>
         </div>
-        <div>{props.title}</div>
+        <div className="py-6">{props.title}</div>
       </div>
     )
   }
@@ -236,7 +231,6 @@ const LevelPage = ( props:{
       if(webaudio) return
       await start()
       setWebAudio(true)
-
     }
     
     return (
@@ -272,7 +266,7 @@ const LevelPage = ( props:{
   const RenderLoading = () => {
     return (
       <div>
-        <div className="w-full text-center text-black mt-40 text-2xl">loading...</div>
+        <div className="w-full text-center text-black mt-40 text-2xl font-bold">loading...</div>
       </div>
     )
   }
@@ -295,7 +289,6 @@ const LevelPage = ( props:{
       )
     }
   
-
   //-----------------------------------------------------------------------
   const RenderNextButton = () => {
     return(

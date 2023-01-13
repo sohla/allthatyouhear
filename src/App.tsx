@@ -127,4 +127,8 @@ last level : playout : multiple tracks one after the other loading etc.
 change to main bracn (need to solve jsx config bug)
 
 
+
+13/1
+remove all the routing : don't need
+
 */

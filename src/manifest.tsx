@@ -18,7 +18,7 @@ export type levelType = {
 export const manifest: Map<string, levelType> = new Map([
   ['level1', {
       floor: 'All That You Hear',
-      title: '',
+      title: '·',
       backgroundImg: '/img/bush.png',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+1.mp3',
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Level+2+Introduction.mp3',
@@ -26,7 +26,7 @@ export const manifest: Map<string, levelType> = new Map([
       outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+1.mp3',
       outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Acknowledgement+of+Country+2023.mp3',
       outroText: 'Acknowledgement',
-      outroImg: '/img/noImage.jpg',
+      outroImg: '',
       tracksText: 'Introduction and Welcome',
       tracks: [
         'https://atyh.s3.ap-southeast-2.amazonaws.com/Level+2_+WELCOME+TO+COUNTRY+06012023.mp3',
@@ -45,7 +45,7 @@ export const manifest: Map<string, levelType> = new Map([
     outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+3.mp3',
     outroText: 'outro',
     outroImg: '/img/stairs.jpg',
-    tracksText: 'text description',
+    tracksText: 'Move through the corridors to discover layers of sound.',
     tracks: [
       'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+A.mp3',
       'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+B.mp3',
@@ -65,7 +65,7 @@ export const manifest: Map<string, levelType> = new Map([
     outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+3.mp3',
     outroText: 'outro',
     outroImg: '/img/stairs.jpg',
-    tracksText: 'tracks',
+    tracksText: 'Move through the corridors to discover layers of sound.',
     tracks: [
       'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+A.mp3',
       'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+B.mp3',
