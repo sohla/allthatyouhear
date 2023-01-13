@@ -56,8 +56,8 @@ export class Level1 extends BaseLevel{
   //-----------------------------------------------------------------------
   onOrientationData(level: levelType | undefined, v: Vec3){
 
-    const t1 = level?.tracks.at(0)
-    const t2 = level?.tracks.at(1)
+    const t1 = level?.tracks[0]
+    const t2 = level?.tracks[0]
     
     if(t1 && t2){
       const p1 = this.players.tonePlayers.get(t1) 

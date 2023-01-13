@@ -76,7 +76,7 @@ export abstract class BaseLevel {
     Transport.position = 0
     Transport.start()
 
-    const t = level?.tracks.at(0)
+    const t = level?.tracks[0]
 
     if(t !== undefined) {
       const player = this.players.tonePlayers.get(t) 
@@ -102,7 +102,7 @@ export abstract class BaseLevel {
   //-----------------------------------------------------------------------
   playProgress(level: levelType | undefined){
   
-    const track = level?.tracks.at(0) // use the first track
+    const track = level?.tracks[0] // use the first track
     if(track){
       const player = this.players.tonePlayers.get(track)
       const ct = player?.toSeconds(Transport.position) || 0
