@@ -136,7 +136,6 @@ const LevelPage = ( props:{
 
       const title = getLevelTitle(index)
 
-      console.log(":",index)
       levels.current.get(title)?.load(manifest.get(title), 
         () => {setIntroLoaded(true)},
         () => {setTracksLoaded(true)},
@@ -155,7 +154,6 @@ const LevelPage = ( props:{
   useEffect( () => {
     
     if(access){
-      console.log("ASASAS")
       requestAccess()
     }else{
       revokeAccess()
@@ -169,7 +167,6 @@ const LevelPage = ( props:{
   //-----------------------------------------------------------------------
   useEffect( () => {
 
-    console.log("acccess:",access)
     if(!access) return
     let v = orientationToVec3(orientation!, 1)
     const title = getLevelTitle(index)
@@ -241,10 +238,11 @@ const LevelPage = ( props:{
     
     return (
       <div>
-      <GoButton title='Tap to begin' onButton={ () => { 
-            setAccess(true)
+        <GoButton title='Tap to begin' onButton={ () => { 
+            setAccess(true) //MUST call this from here. sigh!
             AccessButton()
-      } } />
+        }
+      } />
     </div>
      
     )
@@ -255,14 +253,14 @@ const LevelPage = ( props:{
     <div>
       <GoButton title='Tap to continue' onButton={ () => {
       
+        setAccess(true) //MUST call this from here. sigh!
         setIsPlaying( (f) => !f)
         
         if(index > 0) {
-          const title = getLevelTitle(index - 1)
 
+          const title = getLevelTitle(index - 1)
           levels.current.get(title)?.stopOutroSound(manifest.get(title))
         }
-
       } }/>
     </div>
     )
