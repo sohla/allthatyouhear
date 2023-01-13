@@ -322,7 +322,7 @@ const LevelPage = ( props:{
         
         { webaudio ? <RenderWebAudio /> : <RenderNoWebAudio /> }
         
-        {/* <RenderNextButton /> */}
+        <RenderNextButton />
 
         <PlayersProgressBar ready={isPlaying} level={manifest.get(title)} baseLevel={levels.current.get(title)!} />
 
