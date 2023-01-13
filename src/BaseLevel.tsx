@@ -1,7 +1,7 @@
 import { levelType } from './manifest';
 import { Players } from './Players'
 import {Vec3} from './orientationUtils';
-import {Transport } from 'tone';
+import {Player, Transport } from 'tone';
 
 //-----------------------------------------------------------------------
 export abstract class BaseLevel {
@@ -37,8 +37,22 @@ export abstract class BaseLevel {
       }
     }
   }
+  
   //-----------------------------------------------------------------------
+  stopAllSounds() {
+    
+    console.log("%c stopping all sounds...", "color: #a44;");
 
+    this.players.tonePlayers.forEach( (player: Player) => {
+      player.stop()
+      player.disconnect()
+      player.dispose()
+
+    })
+
+  }
+  
+  //-----------------------------------------------------------------------
   stopOutroSound(level: levelType | undefined) {
     
     console.log("%c stop outro sound...", "color: #a44;");
@@ -48,6 +62,8 @@ export abstract class BaseLevel {
       const player = this.players.tonePlayers.get(t) 
       if(player){
         player.stop()
+        player.disconnect()
+        player.dispose()
       }
     }
   }

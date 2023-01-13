@@ -295,6 +295,9 @@ const LevelPage = ( props:{
       <div>
         <button className=" bg-gray-200 p-9 fixed bottom-0 w-full opacity-40" onClick={ () => {
 
+          const title = getLevelTitle(index)
+          levels.current.get(title)?.stopAllSounds()
+
           setIsPlaying(false)
           setIntroLoaded(false)
           setTracksLoaded(false)
