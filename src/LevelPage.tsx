@@ -168,6 +168,7 @@ const LevelPage = ( props:{
   //-----------------------------------------------------------------------
   useEffect( () => {
 
+    console.log("acccess:",access)
     if(!access) return
     let v = orientationToVec3(orientation!, 1)
     const title = getLevelTitle(index)
@@ -234,9 +235,7 @@ const LevelPage = ( props:{
       if(webaudio) return
       await start()
       setWebAudio(true)
-      requestAccess()
-
-      // setAccess(true)
+      setAccess(true)
 
     }
     
