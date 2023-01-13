@@ -12,7 +12,7 @@ import { Level1 } from './Level1';
 import { Level2 } from './Level2';
 import {start} from 'tone';
 
-// import PlayersProgressBar from './PlayersProgressBar';
+import PlayersProgressBar from './PlayersProgressBar';
 //-----------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------
@@ -324,7 +324,7 @@ const LevelPage = ( props:{
         
         <RenderNextButton />
 
-        {/* <PlayersProgressBar ready={isPlaying} level={manifest.get(title)} baseLevel={levels.current.get(title)!} /> */}
+        <PlayersProgressBar ready={isPlaying} level={manifest.get(title)} baseLevel={levels.current.get(title)!} />
 
         
         <InfoIcon color={"black"}/> 
