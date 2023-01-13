@@ -177,7 +177,7 @@ const LevelPage = ( props:{
     const text = manifest.get(title)?.tracksText
 
     return ( 
-      <div className="bg-pink-400 bg-opacity-60 p-6 text-black font-bold text-2xl w-full self-center text-center">
+      <div className="bg-pink-400 bg-opacity-50 p-6 text-black font-bold text-2xl w-full self-center text-center">
         {text}
       </div>
     )
@@ -199,7 +199,7 @@ const LevelPage = ( props:{
   const RenderPlaying = () => {
     return (
       <div className="bg-black bg-opacity-0 text-black font-bold w-full self-center text-2xl text-center">
-        {(index > 0) ? <div className="bg-yellow-500  h-60 opacity-50 bg-[url('../public/img/MovingPhone_SlowBlack.gif')] bg-contain bg-center bg-no-repeat"></div> : <div></div>}
+        {(index > 0) ? <div className="bg-yellow-500  h-48 opacity-50 bg-[url('../public/img/MovingPhone_SlowBlack.gif')] bg-contain bg-center bg-no-repeat"></div> : <div></div>}
         { outroPlaying ? <RenderOutro /> : <RenderTracks /> }
       </div>
     )
