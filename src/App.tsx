@@ -114,20 +114,23 @@ https://github.com/paypal/AATT
 
 
 8/12
-break out level ui fro each level :
-start building out each level
 
 6/1
-level 1 acknowledge 
-single mono voice track panning / 3D panner possible?
-last level : playout : multiple tracks one after the other loading etc.
 
 11/1
-change to main bracn (need to solve jsx config bug)
 
 
 
 13/1
 remove all the routing : don't need
+
+build level 3-9
+single mono panning track version / 3D panner possible?
+last level : playout : multiple tracks one after the other loading etc.
+
+layout still not great : best way to make that happen
+analytics
+
+intro page ?
 
 */
