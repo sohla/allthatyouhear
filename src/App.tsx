@@ -37,7 +37,7 @@ function Home() {
     <div>
       <div className="grid grid-rows-3 gap-0 h-screen text-center">
       <div className='text-white pt-8 text-4xl'>All That You Hear</div>
-      {/* <div className='text-white'>v5.0</div> */}
+      <div className='text-white'>v5.1</div>
       <div className='text-white font-bold'>🎧 Best experienced on headphones</div>
       <div className='text-white text-1xl'>Music & Sound Design by Biddy Connor</div>
       <div className='text-white'>Curated by Rachael Paintin</div>

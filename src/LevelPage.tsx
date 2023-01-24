@@ -213,12 +213,17 @@ const LevelPage = ( props:{
   
     return (
       <div className="fixed  text-black bottom-32 font-bold w-full self-center text-2xl text-center">
-        <div className=" flex justify-center items-center "
+        {/* <div className=" flex justify-center items-center "
             // onMouseDown={e => { console.log("mouse down") }}
             onTouchEnd={ () => props.onButton() }
         >
           <PlayIcon color="black"/>
-        </div>
+        </div> */}
+
+        <button className="" onClick={ () => props.onButton() }>
+          <PlayIcon color="black"/>
+        </button>
+
         <div className="py-6">{props.title}</div>
       </div>
     )
