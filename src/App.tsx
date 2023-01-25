@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import { Routes, Route, Outlet, Link} from "react-router-dom";
+import { Routes, Route, Outlet, Link} from 'react-router-dom';
 import {Helmet} from "react-helmet";
 //-----------------------------------------------------------------------
 
 // import { OrientationProvider } from './AccessOrientation';
 
 
-import LevelPage from './LevelPage'
+import LevelController from './LevelController'
 // import MissingPersons from './MissingPersons'
 
 //-----------------------------------------------------------------------
@@ -21,13 +21,10 @@ export default function App() {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Helmet>
 
-      {/* <OrientationProvider> */}
-          <Routes>
-            <Route path="levelPage1" element={<LevelPage levelID='level1'/>} /> 
-
-            <Route path="*" element={<Home />} />
-          </Routes>
-      {/* </OrientationProvider> */}
+      <Routes>
+        <Route path="levels" element={<LevelController />} /> 
+        <Route path="*" element={<Home />} />
+      </Routes>
       </div>
   );
 }
@@ -45,7 +42,7 @@ function Home() {
       <div className='text-white'>Music Performed by</div>
       <div className='text-white pb-10'>The Letter String Quartet</div>
 
-      <Link className="bg-gray-900 text-white font-bold py-20  border-black text-2xl" to="/levelPage1">
+      <Link className="bg-gray-900 text-white font-bold py-20  border-black text-2xl" to="/levels">
           TAP TO BEGIN
         </Link>
  
@@ -122,7 +119,6 @@ https://github.com/paypal/AATT
 
 
 13/1
-remove all the routing : don't need
 
 build level 3-9
 single mono panning track version / 3D panner possible?
@@ -133,4 +129,8 @@ analytics
 
 intro page ?
 
+browser back button (https://stackoverflow.com/questions/55966533/show-alert-on-browser-back-button-event-on-react-js)
+
+
 */
+

@@ -1,5 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import './App.css';
+import { createBrowserHistory } from "history";
+
 import { Title } from './Title';
 import { InfoIcon } from './Icons';
 import {PlayIcon } from './Icons';
@@ -17,9 +19,7 @@ import PlayersProgressBar from './PlayersProgressBar';
 //
 //-----------------------------------------------------------------------
 
-const LevelPage = ( props:{
-    levelID: string
-  }) => {
+const LevelController = () => {
 
   const [webaudio, setWebAudio] = useState(false)
 
@@ -29,8 +29,8 @@ const LevelPage = ( props:{
   const [isPlaying, setIsPlaying] = useState(false)
 
   const [introLoaded, setIntroLoaded] = useState(false)
-  const [tracksLoaded, setTracksLoaded] = useState(false)
-  const [outroLoaded, setOutroLoaded] = useState(false)
+  const [, setTracksLoaded] = useState(false)
+  const [, setOutroLoaded] = useState(false)
 
   const [outroPlaying, setOutroPlaying] = useState(false)
 
@@ -39,13 +39,14 @@ const LevelPage = ( props:{
   const [index, setIndex] = useState(0) 
     
   const bg_class = introLoaded ? "100%" : "0%" 
+  let history = createBrowserHistory()
 
   //-----------------------------------------------------------------------
   const getLevelTitle = (index: number) => {
     const levels = ['level1','level2','level3','level4']
     return levels[index]
   }
-
+  
   //-----------------------------------------------------------------------
   useEffect( () => {
 
@@ -64,85 +65,88 @@ const LevelPage = ( props:{
       () => { setTracksLoaded(true) },
       () => { setOutroLoaded(true) },
     )
+ 
 
   },[])
+  //-----------------------------------------------------------------------
+  useEffect( () => {
+    let unlisten = history.listen(({ action, location }) => {
+      // The current location changed.
+      if(action === "POP"){
+        unlisten()
+        const title = getLevelTitle(index)
+        console.log(action, title)
+        levels.current.get(title)?.stopAllSounds()
+
+      }
+    })
+
+    return () => {
+    }
+    // really bad!
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index])
+
   
 
-    //-----------------------------------------------------------------------
-    useEffect( () => {
-      if(!webaudio) return
-      setIsPlaying(true)
-    },[webaudio])
 
-    //-----------------------------------------------------------------------
-    useEffect( () => {
+  //-----------------------------------------------------------------------
+  useEffect( () => {
+    if(!webaudio) return
+    setIsPlaying(true)
+  },[webaudio])
 
-      if(!isPlaying) return
-      if(!introLoaded) return
+  //-----------------------------------------------------------------------
+  useEffect( () => {
 
-      const title = getLevelTitle(index)
-      const level = manifest.get(title)
+    if(!isPlaying) return
+    if(!introLoaded) return
 
-      levels.current.get(title)?.playIntro(level, () => {
+    const title = getLevelTitle(index)
+    const level = manifest.get(title)
 
-        console.log("intro ended")
+    levels.current.get(title)?.playIntro(level, () => {
 
-        levels.current.get(title)?.playTracks(level, () => {
+      // console.log("intro ended")
 
-          console.log("-> tracks ended")
+      levels.current.get(title)?.playTracks(level, () => {
 
-          setOutroPlaying(true)
-          
-          levels.current.get(title)?.playOutro(level, () => {
+        // console.log("-> tracks ended")
 
-            console.log("-> outro ended")
-
-            // leave for now! 
-            setIntroLoaded(false)
-            setTracksLoaded(false)
-            setOutroLoaded(false)
-            setTimeout(function() {
-              setIsPlaying(false)
-              setOutroPlaying(false)
-              setIndex((f) => f + 1)
-            }, 1000)
-          })  
-        })
-      })
-
-    },[isPlaying, index, introLoaded])
-    
-    //-----------------------------------------------------------------------
-    useEffect( () => {
-      if(!introLoaded) return
-      console.log("-> intro loaded")
-    },[introLoaded])
-
-    //-----------------------------------------------------------------------
-    useEffect( () => {
-      if(!tracksLoaded) return
-      console.log("-> tracks loaded")
-    },[tracksLoaded])
-
-    //-----------------------------------------------------------------------
-    useEffect( () => {
-      if(!outroLoaded) return
-      console.log("-> outro loaded")
-    },[outroLoaded])
+        setOutroPlaying(true)
         
-    //-----------------------------------------------------------------------
-    useEffect( () => {
-      if(index === 0) return // don't force load level 1
+        levels.current.get(title)?.playOutro(level, () => {
 
-      const title = getLevelTitle(index)
+          // console.log("-> outro ended")
 
-      levels.current.get(title)?.load(manifest.get(title), 
-        () => {setIntroLoaded(true)},
-        () => {setTracksLoaded(true)},
-        () => {setOutroLoaded(true)},
-      )
-    },[index])
- 
+          // leave for now! 
+          setIntroLoaded(false)
+          setTracksLoaded(false)
+          setOutroLoaded(false)
+          setTimeout(function() {
+            setIsPlaying(false)
+            setOutroPlaying(false)
+            setIndex((f) => f + 1)
+          }, 1000)
+        })  
+      })
+    })
+
+  },[isPlaying, index, introLoaded])
+  
+  //-----------------------------------------------------------------------
+  useEffect( () => {
+    if(index === 0) return // don't force load level 1
+
+    const title = getLevelTitle(index)
+
+    levels.current.get(title)?.load(manifest.get(title), 
+      () => {setIntroLoaded(true)},
+      () => {setTracksLoaded(true)},
+      () => {setOutroLoaded(true)},
+    )
+  },[index])
+
   //-----------------------------------------------------------------------
   useEffect( () => {
     
@@ -345,4 +349,4 @@ const LevelPage = ( props:{
   )
   
 }
-export default LevelPage;
+export default LevelController;
