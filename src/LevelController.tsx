@@ -1,10 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react';
 import './App.css';
 import { createBrowserHistory } from "history";
+import { useSwipeable } from 'react-swipeable';
 
 import { Title } from './Title';
 import { InfoIcon } from './Icons';
 import {PlayIcon } from './Icons';
+
 import {manifest} from './manifest';
 import {orientationToVec3} from './orientationUtils';
 import {useDeviceOrientation} from './useDeviceOrientation';
@@ -39,7 +41,8 @@ const LevelController = () => {
   const [index, setIndex] = useState(0) 
     
   const bg_class = introLoaded ? "100%" : "0%" 
-  let history = createBrowserHistory()
+
+  const history = createBrowserHistory()
 
   //-----------------------------------------------------------------------
   const getLevelTitle = (index: number) => {
@@ -71,19 +74,16 @@ const LevelController = () => {
   //-----------------------------------------------------------------------
   useEffect( () => {
     let unlisten = history.listen(({ action, location }) => {
-      // The current location changed.
       if(action === "POP"){
         unlisten()
         const title = getLevelTitle(index)
-        console.log(action, title)
         levels.current.get(title)?.stopAllSounds()
-
       }
     })
 
     return () => {
     }
-    // really bad!
+    // really bad! ignore history
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index])
 
@@ -214,20 +214,19 @@ const LevelController = () => {
     title: string,
     onButton: () => void
   }) => {
-  
+
+    const handlers = useSwipeable({
+      onTouchStartOrOnMouseDown: () => {props.onButton()},
+      // onTouchEndOrOnMouseUp: () => {props.onButton()},
+      touchEventOptions: {passive: false},
+
+    })
+
     return (
       <div className="fixed  text-black bottom-32 font-bold w-full self-center text-2xl text-center">
-        {/* <div className=" flex justify-center items-center "
-            // onMouseDown={e => { console.log("mouse down") }}
-            onTouchEnd={ () => props.onButton() }
-        >
+        <div className=" flex justify-center items-center " {...handlers}>
           <PlayIcon color="black"/>
-        </div> */}
-
-        <button className="" onClick={ () => props.onButton() }>
-          <PlayIcon color="black"/>
-        </button>
-
+        </div> 
         <div className="py-6">{props.title}</div>
       </div>
     )
@@ -254,7 +253,7 @@ const LevelController = () => {
     )
   }
   //-----------------------------------------------------------------------
-  const RenderNext = () => {
+  const RenderContinue = () => {
   return(
     <div>
       <GoButton title='Tap to continue' onButton={ () => {
@@ -293,31 +292,44 @@ const LevelController = () => {
   const RenderWebAudio = () => {
     return(
       <div>
-        { isPlaying ? <RenderPlaying /> : <RenderNext /> }
+        { isPlaying ? <RenderPlaying /> : <RenderContinue /> }
       </div>
       )
     }
   
   //-----------------------------------------------------------------------
   const RenderNextButton = () => {
+
+    const onFunc = () => {
+      const title = getLevelTitle(index)
+      levels.current.get(title)?.stopAllSounds()
+
+      setIsPlaying(false)
+      setIntroLoaded(false)
+      setTracksLoaded(false)
+      setOutroLoaded(false)
+      setTimeout(function() {
+        setIndex((f) => f + 1)
+      }, 1000)
+    }
+    const handlers = useSwipeable({
+      onTouchStartOrOnMouseDown: () => {onFunc()},
+      // onTouchEndOrOnMouseUp: () => {onFunc()},
+      touchEventOptions: {passive: false},
+
+    })
+
+
     return(
       <div>
-        <button className=" bg-gray-200 p-9 fixed bottom-0 w-full opacity-40" onClick={ () => {
-
-          const title = getLevelTitle(index)
-          levels.current.get(title)?.stopAllSounds()
-
-          setIsPlaying(false)
-          setIntroLoaded(false)
-          setTracksLoaded(false)
-          setOutroLoaded(false)
-          setTimeout(function() {
-            setIndex((f) => f + 1)
-          }, 1000)
-
-        } }>
+        {/* <button className=" bg-gray-200 p-9 fixed bottom-0 w-full opacity-40" onClick={ () => { onFunc()} }>
           <div>SKIP TO NEXT LEVEL</div>
-        </button>
+        </button> */}
+
+        <div className=" bg-gray-200 p-9 fixed bottom-0 w-full opacity-40  text-center" {...handlers}>
+          <div>SKIP TO NEXT LEVEL</div>
+        </div>
+
       </div>
       )
     }
