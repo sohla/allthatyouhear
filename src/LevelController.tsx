@@ -1,20 +1,21 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 import { createBrowserHistory } from "history";
 import { useSwipeable } from 'react-swipeable';
 
 import { Title } from './Title';
 import { InfoIcon } from './Icons';
-import {PlayIcon } from './Icons';
+import { PlayIcon } from './Icons';
 
-import {manifest} from './manifest';
-import {orientationToVec3} from './orientationUtils';
-import {useDeviceOrientation} from './useDeviceOrientation';
+import { manifest } from './manifest';
+import { orientationToVec3 } from './orientationUtils';
+import { useDeviceOrientation } from './useDeviceOrientation';
 
 import { BaseLevel } from './BaseLevel';
 import { Level1 } from './Level1';
 import { Level2 } from './Level2';
-import {start} from 'tone';
+import { Level3 } from './Level3';
+import { start } from 'tone';
 
 import PlayersProgressBar from './PlayersProgressBar';
 //-----------------------------------------------------------------------
@@ -22,6 +23,8 @@ import PlayersProgressBar from './PlayersProgressBar';
 //-----------------------------------------------------------------------
 
 const LevelController = () => {
+
+  const [index, setIndex] = useState(0) 
 
   const [webaudio, setWebAudio] = useState(false)
 
@@ -31,15 +34,13 @@ const LevelController = () => {
   const [isPlaying, setIsPlaying] = useState(false)
 
   const [introLoaded, setIntroLoaded] = useState(false)
-  const [, setTracksLoaded] = useState(false)
+  const [tracksLoaded, setTracksLoaded] = useState(false)
   const [, setOutroLoaded] = useState(false)
 
   const [outroPlaying, setOutroPlaying] = useState(false)
 
   const levels = useRef( new Map<string, BaseLevel>() )
 
-  const [index, setIndex] = useState(1) 
-    
   const bg_class = introLoaded ? "100%" : "0%" 
 
   const history = createBrowserHistory()
@@ -54,17 +55,17 @@ const LevelController = () => {
   useEffect( () => {
     levels.current.set('level1', new Level1(manifest.get('level1')))
     levels.current.set('level2', new Level2(manifest.get('level2')))
-    levels.current.set('level3', new Level2(manifest.get('level3')))
+    levels.current.set('level3', new Level3(manifest.get('level3')))
     levels.current.set('level4', new Level2(manifest.get('level4')))
 
     // console.log("-->",manifest.get('level1')?.title)
 
     // !!!! DD BACK FOR LEVEL 1
-    // levels.current.get('level1')?.load(manifest.get('level1'), 
-    //   () => { setIntroLoaded(true) },
-    //   () => { setTracksLoaded(true) },
-    //   () => { setOutroLoaded(true) },
-    // )
+    levels.current.get('level1')?.load(manifest.get('level1'), 
+      () => { setIntroLoaded(true) },
+      () => { setTracksLoaded(true) },
+      () => { setOutroLoaded(true) },
+    )
   },[])
   //-----------------------------------------------------------------------
   useEffect( () => {
@@ -169,7 +170,7 @@ const LevelController = () => {
     const text = manifest.get(title)?.tracksText
 
     return ( 
-      <div className="bg-pink-400 bg-opacity-50 p-6 text-black font-bold text-2xl w-full self-center text-center">
+      <div className="p-6 text-black font-bold text-2xl w-full self-center text-center">
         {text}
       </div>
     )
@@ -181,7 +182,7 @@ const LevelController = () => {
     const text = manifest.get(title)?.outroText
   
     return ( 
-      <div className="bg-pink-400 bg-opacity-60 p-6 text-black font-bold text-2xl w-full self-center text-center">
+      <div className="p-6 fixed bottom-44 text-black font-bold text-2xl w-full self-center text-center">
         {text}
       </div>
     )
@@ -190,7 +191,7 @@ const LevelController = () => {
   const RenderPlaying = () => {
     return (
       <div className="bg-black bg-opacity-0 text-black font-bold w-full self-center text-2xl text-center">
-        {(index > 0) ? <div className="bg-yellow-500  h-48 opacity-50 bg-[url('../public/img/MovingPhone_SlowBlack.gif')] bg-contain bg-center bg-no-repeat"></div> : <div></div>}
+        { !outroPlaying && (index > 0) ? <div className="h-48 opacity-70 bg-[url('../public/img/MovingPhone_SlowBlack.gif')] bg-contain bg-center bg-no-repeat"></div> : <div></div>}
         { outroPlaying ? <RenderOutro /> : <RenderTracks /> }
       </div>
     )
@@ -229,30 +230,37 @@ const LevelController = () => {
     
     return (
       <div>
-        <GoButton title='Tap to begin' onButton={ () => { 
+        {
+          tracksLoaded ? <GoButton title='Tap to begin this level' onButton={ () => { 
             setAccess(true) //MUST call this from here. sigh!
             AccessButton()
-        }
-      } />
+          }} />
+          :
+          <RenderLoading />
+      }
     </div>
      
     )
   }
   //-----------------------------------------------------------------------
   const RenderContinue = () => {
+
+    const title = getLevelTitle(index - 1)
+    
     return(
       <div>
-        <GoButton title='Tap to continue' onButton={ () => {
+        {
+          tracksLoaded ? <GoButton title='Tap to begin this level' onButton={ () => {
         
           setAccess(true) //MUST call this from here. sigh!
           setIsPlaying( (f) => !f)
           
           if(index > 0) {
-
-            const title = getLevelTitle(index - 1)
             levels.current.get(title)?.stopOutroSound(manifest.get(title))
           }
         } }/>
+        :<RenderLoading />
+      }
       </div>
     )
   }
@@ -325,7 +333,7 @@ const LevelController = () => {
     <div className="h-screen bg-red" >
       <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center transition-opacity duration-1000 ease-out opacity-0" style={{ backgroundImage: u, opacity:bg_class}}>
         
-        <Title floor={String(manifest.get(title)?.floor)} title={String(manifest.get(title)?.title)}/>
+        { !outroPlaying && <Title floor={String(manifest.get(title)?.floor)} title={String(manifest.get(title)?.title)}/> }
         
         { webaudio ? <RenderWebAudio /> : <RenderNoWebAudio /> }
         

@@ -20,7 +20,7 @@ export const manifest: Map<string, levelType> = new Map([
     'level1', {
       floor: 'All That You Hear',
       title: '·',
-      backgroundImg: '/img/bush.png',
+      backgroundImg: '/img/switch.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+1.mp3',
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Level+2+Introduction.mp3',
       introText: 'intro',
@@ -44,9 +44,9 @@ export const manifest: Map<string, levelType> = new Map([
       introText: 'intro',
       outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
       outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+3.mp3',
-      outroText: 'outro',
-      outroImg: '/img/stairs.jpg',
-      tracksText: 'Welcome to the Second Floor. Move through the corridors to discover layers of sound.',
+      outroText: 'Make your way to Level 3',
+      outroImg: '/img/stairs2.jpg',
+      tracksText: 'Move through the corridors to discover layers of sound.',
       tracks: [
         'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+A.mp3',
         'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+B.mp3',
@@ -54,6 +54,29 @@ export const manifest: Map<string, levelType> = new Map([
     }
   ],
   
+  [
+    'level3', {
+      floor: 'Level',
+      title: '3',
+      backgroundImg: '/img/level2.jpg',
+
+      introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+3.mp3',
+      introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Welcome+to+the+third+floor.mp3',
+      introText: 'intro',
+      outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
+      outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+4.mp3',
+      outroText: 'outro',
+      outroImg: '/img/stairs2.jpg',
+      tracksText: 'Move through the corridors to discover layers of sound.',
+      tracks: [
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/The+Building_Main+Track+211122.mp3',
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/The+Building_Side+1+211122.mp3',
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/The+Building_Side+2+211122.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/sin.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/whiteNoise.mp3',
+      ]
+    }
+  ],
  
 ]);
 
