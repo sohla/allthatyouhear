@@ -1,6 +1,3 @@
-
-
-
 import { Player, Destination, now } from 'tone';
 import {levelType} from './manifest';
 
@@ -17,9 +14,6 @@ export type PlayerModel = {
 export class Players {
 
   tonePlayers: Map<string, Player> = new Map<string, Player>()
-
-  // constructor(){
-  // }
 
   //-----------------------------------------------------------------------
   loadLevelAudioFiles(level: levelType | undefined,
@@ -47,7 +41,7 @@ export class Players {
     const incCount = () => {
       count+=1
       if(count >= totalCount){
-        console.log("level ",level?.title," intro loaded")
+        console.log("%c level " + level?.title + " intro loaded", "color: #a4a;")
         onLoad()
       }
     }
@@ -74,7 +68,8 @@ export class Players {
     const incCount = () => {
       count+=1
       if(count >= totalCount){
-        console.log("level ",level?.title," outro loaded")
+        console.log("%c level " + level?.title + " outro loaded", "color: #a4a;")
+
         onLoad()
       }
     }
@@ -102,7 +97,7 @@ export class Players {
     const incCount = () => {
       count+=1
       if(count >= totalCount){
-        console.log("level ",level?.title," tracks loaded")
+        console.log("%c level " + level?.title + " tracks loaded", "color: #a4a;")
         onLoad()
       }
     }
@@ -156,6 +151,7 @@ export class Players {
     if(level?.introSound){
       const p = this.tonePlayers.get(level?.outroSound) as Player
       this.playSound(p,model)
+      // TODO add delay line 
     }
   }
 

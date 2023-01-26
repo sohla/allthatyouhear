@@ -38,7 +38,7 @@ const LevelController = () => {
 
   const levels = useRef( new Map<string, BaseLevel>() )
 
-  const [index, setIndex] = useState(0) 
+  const [index, setIndex] = useState(1) 
     
   const bg_class = introLoaded ? "100%" : "0%" 
 
@@ -52,9 +52,6 @@ const LevelController = () => {
   
   //-----------------------------------------------------------------------
   useEffect( () => {
-
-    // levelNames.current = ['level1','level2','level3','level4']
-
     levels.current.set('level1', new Level1(manifest.get('level1')))
     levels.current.set('level2', new Level2(manifest.get('level2')))
     levels.current.set('level3', new Level2(manifest.get('level3')))
@@ -63,13 +60,11 @@ const LevelController = () => {
     // console.log("-->",manifest.get('level1')?.title)
 
     // !!!! DD BACK FOR LEVEL 1
-    levels.current.get('level1')?.load(manifest.get('level1'), 
-      () => { setIntroLoaded(true) },
-      () => { setTracksLoaded(true) },
-      () => { setOutroLoaded(true) },
-    )
- 
-
+    // levels.current.get('level1')?.load(manifest.get('level1'), 
+    //   () => { setIntroLoaded(true) },
+    //   () => { setTracksLoaded(true) },
+    //   () => { setOutroLoaded(true) },
+    // )
   },[])
   //-----------------------------------------------------------------------
   useEffect( () => {
@@ -98,7 +93,6 @@ const LevelController = () => {
 
   //-----------------------------------------------------------------------
   useEffect( () => {
-
     if(!isPlaying) return
     if(!introLoaded) return
 
@@ -107,31 +101,28 @@ const LevelController = () => {
 
     levels.current.get(title)?.playIntro(level, () => {
 
-      // console.log("intro ended")
-
       levels.current.get(title)?.playTracks(level, () => {
-
-        // console.log("-> tracks ended")
 
         setOutroPlaying(true)
         
         levels.current.get(title)?.playOutro(level, () => {
-
-          // console.log("-> outro ended")
-
           // leave for now! 
-          setIntroLoaded(false)
           setTracksLoaded(false)
           setOutroLoaded(false)
+
           setTimeout(function() {
-            setIsPlaying(false)
-            setOutroPlaying(false)
-            setIndex((f) => f + 1)
-          }, 1000)
+            setIntroLoaded(false) // triggers fade
+
+            setTimeout(function() { // delay after fade has finished
+              setIsPlaying(false)
+              setOutroPlaying(false)
+              setIndex((f) => f + 1)
+            }, 1000)
+
+          }, 3000)
         })  
       })
     })
-
   },[isPlaying, index, introLoaded])
   
   //-----------------------------------------------------------------------
@@ -139,7 +130,6 @@ const LevelController = () => {
     if(index === 0) return // don't force load level 1
 
     const title = getLevelTitle(index)
-
     levels.current.get(title)?.load(manifest.get(title), 
       () => {setIntroLoaded(true)},
       () => {setTracksLoaded(true)},
@@ -165,18 +155,16 @@ const LevelController = () => {
   
   //-----------------------------------------------------------------------
   useEffect( () => {
-
     if(!access) return
+    
     let v = orientationToVec3(orientation!, 1)
     const title = getLevelTitle(index)
 
     levels.current.get(title)?.onOrientationData(manifest.get(title), v)
-
   },[access, orientation, index])
 
   //-----------------------------------------------------------------------
   const RenderTracks = () => {
-
     const title = getLevelTitle(index)
     const text = manifest.get(title)?.tracksText
 
@@ -189,7 +177,6 @@ const LevelController = () => {
 
   //-----------------------------------------------------------------------
   const RenderOutro = () => {
-
     const title = getLevelTitle(index)
     const text = manifest.get(title)?.outroText
   
@@ -233,7 +220,6 @@ const LevelController = () => {
   }
   //-----------------------------------------------------------------------
   const RenderWebAudioButton = () => {
-    
     const AccessButton = async () => {
     
       if(webaudio) return
@@ -254,20 +240,20 @@ const LevelController = () => {
   }
   //-----------------------------------------------------------------------
   const RenderContinue = () => {
-  return(
-    <div>
-      <GoButton title='Tap to continue' onButton={ () => {
-      
-        setAccess(true) //MUST call this from here. sigh!
-        setIsPlaying( (f) => !f)
+    return(
+      <div>
+        <GoButton title='Tap to continue' onButton={ () => {
         
-        if(index > 0) {
+          setAccess(true) //MUST call this from here. sigh!
+          setIsPlaying( (f) => !f)
+          
+          if(index > 0) {
 
-          const title = getLevelTitle(index - 1)
-          levels.current.get(title)?.stopOutroSound(manifest.get(title))
-        }
-      } }/>
-    </div>
+            const title = getLevelTitle(index - 1)
+            levels.current.get(title)?.stopOutroSound(manifest.get(title))
+          }
+        } }/>
+      </div>
     )
   }
   //-----------------------------------------------------------------------
@@ -294,8 +280,8 @@ const LevelController = () => {
       <div>
         { isPlaying ? <RenderPlaying /> : <RenderContinue /> }
       </div>
-      )
-    }
+    )
+  }
   
   //-----------------------------------------------------------------------
   const RenderNextButton = () => {
@@ -312,13 +298,11 @@ const LevelController = () => {
         setIndex((f) => f + 1)
       }, 1000)
     }
+
     const handlers = useSwipeable({
       onTouchStartOrOnMouseDown: () => {onFunc()},
-      // onTouchEndOrOnMouseUp: () => {onFunc()},
       touchEventOptions: {passive: false},
-
     })
-
 
     return(
       <div>
@@ -339,7 +323,6 @@ const LevelController = () => {
 
   return (
     <div className="h-screen bg-red" >
-      {/* <div className="bg-cover bg-center fixed top-0 right-0 flex flex-col h-screen justify-center transition-opacity duration-1000 ease-out" style={{ backgroundImage: u, opacity:bg_class}}></div> */}
       <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center transition-opacity duration-1000 ease-out opacity-0" style={{ backgroundImage: u, opacity:bg_class}}>
         
         <Title floor={String(manifest.get(title)?.floor)} title={String(manifest.get(title)?.title)}/>
@@ -349,14 +332,10 @@ const LevelController = () => {
         <RenderNextButton />
 
         <PlayersProgressBar ready={isPlaying} level={manifest.get(title)} baseLevel={levels.current.get(title)!} />
-
         
         <InfoIcon color={"black"}/> 
         
      </div>
-
-
-    
     </div>
   )
   

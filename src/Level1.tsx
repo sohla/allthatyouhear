@@ -12,17 +12,12 @@ export class Level1 extends BaseLevel{
 
   //-----------------------------------------------------------------------
   playIntro(level: levelType | undefined, onIntroEnded: () => void){
-
-    // this.players.playIntroSound(level, {playbackRate:0.5, volume:0, offset:0, fade:0})
     this.players.playIntroVO(level, {playbackRate:1, volume:-5, offset:0, fade:0, loop: false})
-
     level && super.playIntro(level, onIntroEnded)
   }
 
   //-----------------------------------------------------------------------
   playTracks(level: levelType | undefined, onTracksEnded: () => void){
-  
-
     level?.tracks.forEach( (track) => { 
       const player = this.players.tonePlayers.get(track) 
       if(player){
@@ -43,15 +38,10 @@ export class Level1 extends BaseLevel{
     })
 
     // level && super.playTracks(level, onTracksEnded)
-
-
   }  
 
   //-----------------------------------------------------------------------
   playOutro(level: levelType | undefined, onOutroEnded: () => void){
-    
-    
-    // this.players.playOutroSound(level, {playbackRate:0.5, volume:0, offset:0, fade:0})
     this.players.playOutroVO(level, {playbackRate:1, volume:-5, offset:0, fade:0, loop: false})
     level && super.playOutro(level, onOutroEnded)
   }

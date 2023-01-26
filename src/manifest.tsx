@@ -16,7 +16,8 @@ export type levelType = {
 };
 
 export const manifest: Map<string, levelType> = new Map([
-  ['level1', {
+  [
+    'level1', {
       floor: 'All That You Hear',
       title: '·',
       backgroundImg: '/img/bush.png',
@@ -31,28 +32,26 @@ export const manifest: Map<string, levelType> = new Map([
       tracks: [
         'https://atyh.s3.ap-southeast-2.amazonaws.com/Level+2_+WELCOME+TO+COUNTRY+06012023.mp3',
       ],
-      
     }
   ],
-  ['level2', {
-    floor: 'Level',
-    title: '2',
-    backgroundImg: '/img/level1.jpg',
-    introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+2.mp3',
-    introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Welcome+to+the+second+floor.mp3',
-    introText: 'intro',
-    outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
-    outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+3.mp3',
-    outroText: 'outro',
-    outroImg: '/img/stairs.jpg',
-    tracksText: 'Welcome to the Second Floor. Move through the corridors to discover layers of sound.',
-    tracks: [
-      'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+A.mp3',
-      'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+B.mp3',
-    
-
-    ]
-}
+  [
+    'level2', {
+      floor: 'Level',
+      title: '2',
+      backgroundImg: '/img/level1.jpg',
+      introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+2.mp3',
+      introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Welcome+to+the+second+floor.mp3',
+      introText: 'intro',
+      outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
+      outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+3.mp3',
+      outroText: 'outro',
+      outroImg: '/img/stairs.jpg',
+      tracksText: 'Welcome to the Second Floor. Move through the corridors to discover layers of sound.',
+      tracks: [
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+A.mp3',
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+B.mp3',
+      ]
+    }
   ],
   
  
