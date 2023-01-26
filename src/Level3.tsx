@@ -48,7 +48,6 @@ export class Level3 extends BaseLevel{
         player.start(now()).sync()
       }
     })
-    console.log(this.panners)
   }  
 //-----------------------------------------------------------------------
 playOutro(level: levelType | undefined, onOutroEnded: () => void){

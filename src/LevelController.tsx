@@ -231,7 +231,7 @@ const LevelController = () => {
     return (
       <div>
         {
-          tracksLoaded ? <GoButton title='Tap to begin this level' onButton={ () => { 
+          tracksLoaded ? <GoButton title='Tap to begin' onButton={ () => { 
             setAccess(true) //MUST call this from here. sigh!
             AccessButton()
           }} />
@@ -268,7 +268,7 @@ const LevelController = () => {
   const RenderLoading = () => {
     return (
       <div>
-        <div className="w-full text-center text-black mt-40 text-2xl font-bold">loading...</div>
+        <div className="w-full text-center text-black mt-40 text-2xl font-bold opacity-50">loading...</div>
       </div>
     )
   }
