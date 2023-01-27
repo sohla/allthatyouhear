@@ -31,7 +31,7 @@ export class Level3 extends BaseLevel{
       if(player){
         console.log("playing " + track)
         player.set({
-          playbackRate: 1,
+          playbackRate: 10,
           volume: 0,
           fadeIn: 0,
           fadeOut: 0,
@@ -73,28 +73,18 @@ playOutro(level: levelType | undefined, onOutroEnded: () => void){
           // p1.volume.value = -90
           
           // p2
-          p2.volume.value = -( (v.y) * 90)
+          // p2.volume.value = -( (v.y) * 90)
           if(this.panners[0]){
             this.panners[0].pan.value = (v.y * 2) - 1
           }
 
           // p3
-          p3.volume.value = -( (1 - v.y ) * 90) 
+          // p3.volume.value = -( (1 - v.y ) * 90) 
           if(this.panners[1]){
-            this.panners[1].pan.value = (v.y * 2) - 1
+            this.panners[1].pan.value = ((1 - v.y) * 2) - 1
           }
         }
       }
     }
   }
 }
-
-// p1.volume.value = -( (1-v.y ) * 90) 
-// p2.volume.value = -( (v.y) * 90) + 9
-
-// players.current[1].volume.value = -( (1-v.y) * 20) + 3
-// panners.current[0].pan.value = (p.y * 2) -1
-
-// players.current[2].volume.value = -( (v.y) * 20) + 3
-// let ps = (((p.y + 0.5) * 100) % 100) / 100
-// panners.current[1].pan.value = (ps * 2) - 1

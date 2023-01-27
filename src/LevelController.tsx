@@ -24,7 +24,7 @@ import PlayersProgressBar from './PlayersProgressBar';
 
 const LevelController = () => {
 
-  const [index, setIndex] = useState(0) 
+  const [index, setIndex] = useState(1) 
 
   const [webaudio, setWebAudio] = useState(false)
 
@@ -61,11 +61,11 @@ const LevelController = () => {
     // console.log("-->",manifest.get('level1')?.title)
 
     // !!!! DD BACK FOR LEVEL 1
-    levels.current.get('level1')?.load(manifest.get('level1'), 
-      () => { setIntroLoaded(true) },
-      () => { setTracksLoaded(true) },
-      () => { setOutroLoaded(true) },
-    )
+    // levels.current.get('level1')?.load(manifest.get('level1'), 
+    //   () => { setIntroLoaded(true) },
+    //   () => { setTracksLoaded(true) },
+    //   () => { setOutroLoaded(true) },
+    // )
   },[])
   //-----------------------------------------------------------------------
   useEffect( () => {
@@ -82,9 +82,6 @@ const LevelController = () => {
     // really bad! ignore history
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index])
-
-  
-
 
   //-----------------------------------------------------------------------
   useEffect( () => {

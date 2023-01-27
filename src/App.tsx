@@ -120,17 +120,16 @@ https://github.com/paypal/AATT
 
 13/1
 
-build level 3-9
-single mono panning track version / 3D panner possible?
+build level 4-9
 last level : playout : multiple tracks one after the other loading etc.
 
-layout still not great : best way to make that happen
 analytics
 
-intro page ?
 
 browser back button (https://stackoverflow.com/questions/55966533/show-alert-on-browser-back-button-event-on-react-js)
 
+compress images!!!
 
+single mono panning track version / 3D panner possible?
 */
 
