@@ -33,19 +33,19 @@ function Home() {
   return (
     <div>
       <div className="grid grid-rows-3 gap-0 h-screen text-center">
-      <div className='text-white pt-8 text-4xl'>All That You Hear</div>
-      <div className='text-white'>v5.2</div>
-      <div className='text-white font-bold'>🎧 Best experienced on headphones</div>
-      <div className='text-white text-1xl'>Music & Sound Design by Biddy Connor</div>
-      <div className='text-white'>Curated by Rachael Paintin</div>
-      <div className='text-white'>Interactive Coding by Steph OHara</div>
-      <div className='text-white'>Music Performed by</div>
-      <div className='text-white pb-10'>The Letter String Quartet</div>
+        <div className='text-white pt-8 text-4xl'>All That You Hear</div>
+        <div className='text-white'>v5.2</div>
+        <div className='text-white font-bold'>🎧 Best experienced on headphones</div>
+        <div className='text-white text-1xl'>Music & Sound Design by Biddy Connor</div>
+        <div className='text-white'>Curated by Rachael Paintin</div>
+        <div className='text-white'>Interactive Coding by Steph OHara</div>
+        <div className='text-white'>Music Performed by</div>
+        <div className='text-white pb-10'>The Letter String Quartet</div>
 
-      <Link className="bg-gray-900 text-white font-bold py-20  border-black text-2xl" to="/levels">
-          TAP TO BEGIN
+        <Link className="bg-gray-900 text-white font-bold py-20  border-black text-2xl" to="/levels">
+            TAP TO BEGIN
         </Link>
- 
+  
       </div>
 
       <Outlet />

@@ -215,7 +215,7 @@ const LevelController = () => {
         <div className=" flex justify-center items-center " {...handlers}>
           <PlayIcon color="black"/>
         </div> 
-        <div className="py-6">{props.title}</div>
+        <div className="py-6 opacity-80">{props.title}</div>
       </div>
     )
   }
