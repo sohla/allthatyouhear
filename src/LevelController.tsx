@@ -16,6 +16,7 @@ import { Level1 } from './Level1';
 import { Level2 } from './Level2';
 import { Level3 } from './Level3';
 import { Level4 } from './Level4';
+import { Level5 } from './Level5';
 import { start } from 'tone';
 
 import PlayersProgressBar from './PlayersProgressBar';
@@ -25,7 +26,7 @@ import PlayersProgressBar from './PlayersProgressBar';
 
 const LevelController = () => {
 
-  const [index, setIndex] = useState(3) 
+  const [index, setIndex] = useState(4) 
 
   const [webaudio, setWebAudio] = useState(false)
 
@@ -48,7 +49,7 @@ const LevelController = () => {
 
   //-----------------------------------------------------------------------
   const getLevelTitle = (index: number) => {
-    const levels = ['level1','level2','level3','level4']
+    const levels = ['level1','level2','level3','level4','level5']
     return levels[index]
   }
   
@@ -58,6 +59,7 @@ const LevelController = () => {
     levels.current.set('level2', new Level2(manifest.get('level2')))
     levels.current.set('level3', new Level3(manifest.get('level3')))
     levels.current.set('level4', new Level4(manifest.get('level4')))
+    levels.current.set('level5', new Level5(manifest.get('level5')))
 
     // console.log("-->",manifest.get('level1')?.title)
 

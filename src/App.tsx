@@ -131,5 +131,8 @@ browser back button (https://stackoverflow.com/questions/55966533/show-alert-on-
 compress images!!!
 
 single mono panning track version / 3D panner possible?
+
+reshoot bg images
+
 */
 

@@ -7,7 +7,9 @@ import {Player, Transport } from 'tone';
 export abstract class BaseLevel {
   
   players = new Players()
-
+  trackRate = 1
+  ioRate = 1
+  
   //-----------------------------------------------------------------------
   load(level: levelType | undefined, 
     onIntroLoaded: () => void,

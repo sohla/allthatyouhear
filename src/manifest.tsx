@@ -99,5 +99,28 @@ export const manifest: Map<string, levelType> = new Map([
       ]
     }
   ],  
+  [
+    'level5', {
+      floor: 'Level',
+      title: '',
+      backgroundImg: '/img/level5.jpg',
+
+      introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+2.mp3',
+      introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/5.+Welcome+to+the+fifth+floor_Zoe.mp3',
+      introText: 'intro',
+      outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
+      outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+6.mp3',
+      outroText: 'Make your way to Level 6',
+      outroImg: '/img/stairs2.jpg',
+      tracksText: 'Move through the corridors to discover layers of sound.',
+      tracks: [
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/LEVEL+5_Sounds+MAIN+TRACK+03012023.mp3',
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/LEVEL+5_Sounds+SURROUND+SOUNDS+03012023.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/GHOSTS+1_Stories+B+side+21112022.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/sin.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/whiteNoise.mp3',
+      ]
+    }
+  ],    
 ]);
 
