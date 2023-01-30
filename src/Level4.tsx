@@ -18,8 +18,8 @@ export class Level4 extends BaseLevel{
   //-----------------------------------------------------------------------
   playIntro(level: levelType | undefined, onIntroEnded: () => void){
     super.playIntro(level, onIntroEnded)
-    this.players.playIntroSound(level, {playbackRate:1, volume:-10, offset:0, fade:0, loop: false})
-    this.players.playIntroVO(level, {playbackRate:1, volume:-6, offset:2, fade:0, loop: false})
+    this.players.playIntroSound(level, {playbackRate:this.ioRate, volume:-10, offset:0, fade:0, loop: false})
+    this.players.playIntroVO(level, {playbackRate:this.ioRate, volume:-6, offset:2, fade:0, loop: false})
   }
 
   
@@ -31,7 +31,7 @@ export class Level4 extends BaseLevel{
       if(player){
         console.log("playing " + track)
         player.set({
-          playbackRate: 1,
+          playbackRate: this.trackRate,
           volume: 0,
           fadeIn: 0,
           fadeOut: 0,
@@ -52,8 +52,8 @@ export class Level4 extends BaseLevel{
 //-----------------------------------------------------------------------
 playOutro(level: levelType | undefined, onOutroEnded: () => void){
     super.playOutro(level, onOutroEnded)
-    this.players.playOutroSound(level, {playbackRate:1, volume:-5, offset:0, fade:2, loop: true})
-    this.players.playOutroVO(level, {playbackRate:1, volume:-4, offset:0, fade:0, loop: false})
+    this.players.playOutroSound(level, {playbackRate:this.ioRate, volume:-5, offset:0, fade:2, loop: true})
+    this.players.playOutroVO(level, {playbackRate:this.ioRate, volume:-4, offset:0, fade:0, loop: false})
   }
 
   onOrientationData(level: levelType | undefined, v: Vec3){

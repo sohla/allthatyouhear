@@ -58,7 +58,6 @@ export const manifest: Map<string, levelType> = new Map([
       floor: 'Level',
       title: '',
       backgroundImg: '/img/level3.jpg',
-
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+3.mp3',
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/3.+Welcome+to+the+third+floor_Zoe.mp3',
       introText: 'intro',
@@ -104,7 +103,6 @@ export const manifest: Map<string, levelType> = new Map([
       floor: 'Level',
       title: '',
       backgroundImg: '/img/level5.jpg',
-
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+2.mp3',
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/5.+Welcome+to+the+fifth+floor_Zoe.mp3',
       introText: 'intro',
@@ -121,6 +119,93 @@ export const manifest: Map<string, levelType> = new Map([
         // 'https://atyh.s3.ap-southeast-2.amazonaws.com/whiteNoise.mp3',
       ]
     }
-  ],    
+  ],   
+  [
+    'level6', {
+      floor: 'Level',
+      title: '',
+      backgroundImg: '/img/level6.jpg',
+      introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+3.mp3',
+      introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/6.+Welcome+to+the+sixth+floor_Lizzy.mp3',
+      introText: 'intro',
+      outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
+      outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+7.mp3',
+      outroText: 'Make your way to Level 7',
+      outroImg: '/img/stairs2.jpg',
+      tracksText: 'Move through the corridors to discover layers of sound.',
+      tracks: [
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/Lifts+2+Side+A.mp3',
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/Lifts+2+Side+B.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/GHOSTS+1_Stories+B+side+21112022.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/sin.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/whiteNoise.mp3',
+      ]
+    }
+  ],      
+  [
+    'level7', {
+      floor: 'Level',
+      title: '',
+      backgroundImg: '/img/level7.jpg',
+      introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+1.mp3',
+      introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/7.+Welcome+to+the+seventh+floor_Zoe.mp3',
+      introText: 'intro',
+      outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
+      outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+8.mp3',
+      outroText: 'Make your way to Level 8',
+      outroImg: '/img/stairs2.jpg',
+      tracksText: 'Move through the corridors to discover layers of sound.',
+      tracks: [
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/Layer+Upon+Layer+Main+Track+02012023.mp3',
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/Layer+Upon+Layer+Surround+Voices+Track+02012023+MONO.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/GHOSTS+1_Stories+B+side+21112022.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/sin.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/whiteNoise.mp3',
+      ]
+    }
+  ],      
+  [
+    'level8', {
+      floor: 'Level',
+      title: '',
+      backgroundImg: '/img/level8.jpg',
+      introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+2.mp3',
+      introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/8.+Welcome+to+the+eighth+floor_Lizzy.mp3',
+      introText: 'intro',
+      outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
+      outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+9.mp3',
+      outroText: 'Make your way to Level 9',
+      outroImg: '/img/stairs2.jpg',
+      tracksText: 'Move through the corridors to discover layers of sound.',
+      tracks: [
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/GHOSTS+2_Music+21112022.mp3',
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/GHOSTS+2_Stories+A+side+21112022.mp3',
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/GHOSTS+2_Stories+B+side+21112022.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/GHOSTS+1_Stories+B+side+21112022.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/sin.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/whiteNoise.mp3',
+      ]
+    }
+  ],   
+  [
+    'level9', {
+      floor: 'Level',
+      title: '',
+      backgroundImg: '/img/level9.jpg',
+      introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+3.mp3',
+      introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/9.+Welcome+to+the+ninth+floor_Zoe.mp3',
+      introText: 'intro',
+      outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
+      outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Final+Thank+you.mp3',
+      outroText: 'thank you',
+      outroImg: '/img/glass.jpg',
+      tracksText: 'Move through the corridors to discover layers of sound.',
+      tracks: [
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/Always+the+Same.mp3',
+
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/exitTracks.mp3',
+      ]
+    }
+  ],          
 ]);
 

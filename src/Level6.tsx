@@ -6,7 +6,7 @@ import { Destination, now } from 'tone';
 
 
 //-----------------------------------------------------------------------
-export class Level2 extends BaseLevel{
+export class Level6 extends BaseLevel{
   
   constructor(level: levelType | undefined){
     super()
@@ -16,7 +16,7 @@ export class Level2 extends BaseLevel{
   playIntro(level: levelType | undefined, onIntroEnded: () => void){
     super.playIntro(level, onIntroEnded)
     this.players.playIntroSound(level, {playbackRate:this.ioRate, volume:-10, offset:0, fade:0, loop: false})
-    this.players.playIntroVO(level, {playbackRate:this.ioRate, volume:-6, offset:2, fade:0, loop: false})
+    this.players.playIntroVO(level, {playbackRate:this.ioRate, volume:-6, offset:2, fade:0, loop: false}  )
   }
 
   
@@ -26,9 +26,6 @@ export class Level2 extends BaseLevel{
     level?.tracks.forEach( (track: string, i: number) => { 
       const player = this.players.tonePlayers.get(track) 
       if(player){
-        // use helper function
-        // this.players.playSound(player, {playbackRate:1, volume:0, offset:1, fade:0})
-        // or fully custom playback
         player.set({
           playbackRate: this.trackRate,
           volume: 0,

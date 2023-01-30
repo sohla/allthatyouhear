@@ -7,7 +7,7 @@ import {Player, Transport } from 'tone';
 export abstract class BaseLevel {
   
   players = new Players()
-  trackRate = 1
+  trackRate = 20
   ioRate = 1
   
   //-----------------------------------------------------------------------
@@ -88,7 +88,6 @@ export abstract class BaseLevel {
   //-----------------------------------------------------------------------
   playTracks(level: levelType | undefined, onTracksEnded: () => void) {
 
-    
     console.log("%c playing tracks...", "color: #44a;")
 
     Transport.position = 0

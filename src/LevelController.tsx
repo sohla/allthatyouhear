@@ -17,6 +17,11 @@ import { Level2 } from './Level2';
 import { Level3 } from './Level3';
 import { Level4 } from './Level4';
 import { Level5 } from './Level5';
+import { Level6 } from './Level6';
+import { Level7 } from './Level7';
+import { Level8 } from './Level8';
+import { Level9 } from './Level9';
+
 import { start } from 'tone';
 
 import PlayersProgressBar from './PlayersProgressBar';
@@ -27,7 +32,7 @@ import PlayersProgressBar from './PlayersProgressBar';
 
 const LevelController = () => {
 
-  const [index, setIndex] = useState(4) 
+  const [index, setIndex] = useState(8) 
 
   const [webaudio, setWebAudio] = useState(false)
 
@@ -50,7 +55,7 @@ const LevelController = () => {
 
   //-----------------------------------------------------------------------
   const getLevelTitle = (index: number) => {
-    const levels = ['level1','level2','level3','level4','level5']
+    const levels = ['level1','level2','level3','level4','level5','level6','level7','level8','level9']
     return levels[index]
   }
   
@@ -61,7 +66,11 @@ const LevelController = () => {
     levels.current.set('level3', new Level3(manifest.get('level3')))
     levels.current.set('level4', new Level4(manifest.get('level4')))
     levels.current.set('level5', new Level5(manifest.get('level5')))
-
+    levels.current.set('level6', new Level6(manifest.get('level6')))
+    levels.current.set('level7', new Level7(manifest.get('level7')))
+    levels.current.set('level8', new Level8(manifest.get('level8')))
+    levels.current.set('level9', new Level9(manifest.get('level9')))
+    
     // console.log("-->",manifest.get('level1')?.title)
 
     // !!!! DD BACK FOR LEVEL 1
@@ -319,7 +328,7 @@ const LevelController = () => {
           <div>SKIP TO NEXT LEVEL</div>
         </button> */}
 
-        <div className=" bg-gray-200 p-9 fixed bottom-0 w-full opacity-40  text-center" {...handlers}>
+        <div className=" bg-green-200 p-9 fixed bottom-0 w-full opacity-50  text-center" {...handlers}>
           <div>SKIP TO NEXT LEVEL</div>
         </div>
 

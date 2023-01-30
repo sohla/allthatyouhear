@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import './App.css';
 import { Routes, Route, Outlet, Link} from 'react-router-dom';
 import {Helmet} from "react-helmet";
@@ -7,7 +7,7 @@ import LevelController from './LevelController'
 //-----------------------------------------------------------------------
 export default function App() {
   return (
-    <div className="bg-emerald-800">
+    <div className=" bg-slate-800">
       <Helmet>
         <meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -24,7 +24,7 @@ export default function App() {
 
 //-----------------------------------------------------------------------
 function Home() {
-  const [debug, setDebug] = useState(false);
+  // const [debug, setDebug] = useState(false);
 
   return (
     <div>
@@ -38,12 +38,12 @@ function Home() {
         <div className='text-white'>Music Performed by</div>
         <div className='text-white pb-10'>The Letter String Quartet</div>
 
-        <div>
+        {/* <div>
           <label className='text-white pt-8 text-4xl'>
             Debug Mode
             <input className='w-16 h-16 m-4' type="checkbox" checked={ debug  } onChange={ () => {setDebug( (f) => !f )}}/>
           </label>
-        </div>
+        </div> */}
 
         <Link className="bg-gray-900 text-white font-bold py-20  border-black text-2xl" to="/levels">
             TAP TO BEGIN
