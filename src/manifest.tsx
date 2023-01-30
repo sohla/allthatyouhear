@@ -40,7 +40,7 @@ export const manifest: Map<string, levelType> = new Map([
       title: '2',
       backgroundImg: '/img/level1.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+2.mp3',
-      introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Welcome+to+the+second+floor.mp3',
+      introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/2.+Welcome+to+the+second+floor_Lizzy.mp3',
       introText: 'intro',
       outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
       outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+3.mp3',
@@ -53,19 +53,18 @@ export const manifest: Map<string, levelType> = new Map([
       ]
     }
   ],
-  
   [
     'level3', {
       floor: 'Level',
-      title: '3',
-      backgroundImg: '/img/level2.jpg',
+      title: '',
+      backgroundImg: '/img/level3.jpg',
 
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+3.mp3',
-      introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Welcome+to+the+third+floor.mp3',
+      introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/3.+Welcome+to+the+third+floor_Zoe.mp3',
       introText: 'intro',
       outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
       outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+4.mp3',
-      outroText: 'outro',
+      outroText: 'Make your way to Level 4',
       outroImg: '/img/stairs2.jpg',
       tracksText: 'Move through the corridors to discover layers of sound.',
       tracks: [
@@ -77,6 +76,28 @@ export const manifest: Map<string, levelType> = new Map([
       ]
     }
   ],
- 
+  [
+    'level4', {
+      floor: 'Level',
+      title: '',
+      backgroundImg: '/img/level4.jpg',
+
+      introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+1.mp3',
+      introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/4.+Welcome+to+the+fourth+floor_Lizzy.mp3',
+      introText: 'intro',
+      outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
+      outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+5.mp3',
+      outroText: 'Make your way to Level 5',
+      outroImg: '/img/stairs2.jpg',
+      tracksText: 'Move through the corridors to discover layers of sound.',
+      tracks: [
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/GHOSTS+1_Music+21112022.mp3',
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/GHOSTS+1_Stories+A+side+21112022.mp3',
+        'https://atyh.s3.ap-southeast-2.amazonaws.com/GHOSTS+1_Stories+B+side+21112022.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/sin.mp3',
+        // 'https://atyh.s3.ap-southeast-2.amazonaws.com/whiteNoise.mp3',
+      ]
+    }
+  ],  
 ]);
 

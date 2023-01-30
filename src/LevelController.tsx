@@ -15,6 +15,7 @@ import { BaseLevel } from './BaseLevel';
 import { Level1 } from './Level1';
 import { Level2 } from './Level2';
 import { Level3 } from './Level3';
+import { Level4 } from './Level4';
 import { start } from 'tone';
 
 import PlayersProgressBar from './PlayersProgressBar';
@@ -24,7 +25,7 @@ import PlayersProgressBar from './PlayersProgressBar';
 
 const LevelController = () => {
 
-  const [index, setIndex] = useState(1) 
+  const [index, setIndex] = useState(3) 
 
   const [webaudio, setWebAudio] = useState(false)
 
@@ -56,7 +57,7 @@ const LevelController = () => {
     levels.current.set('level1', new Level1(manifest.get('level1')))
     levels.current.set('level2', new Level2(manifest.get('level2')))
     levels.current.set('level3', new Level3(manifest.get('level3')))
-    levels.current.set('level4', new Level2(manifest.get('level4')))
+    levels.current.set('level4', new Level4(manifest.get('level4')))
 
     // console.log("-->",manifest.get('level1')?.title)
 
@@ -122,7 +123,7 @@ const LevelController = () => {
       })
     })
   },[isPlaying, index, introLoaded])
-  
+
   //-----------------------------------------------------------------------
   useEffect( () => {
     if(index === 0) return // don't force load level 1
@@ -228,7 +229,7 @@ const LevelController = () => {
     return (
       <div>
         {
-          tracksLoaded ? <GoButton title='Tap to begin' onButton={ () => { 
+          introLoaded ? <GoButton title='Tap to begin' onButton={ () => { 
             setAccess(true) //MUST call this from here. sigh!
             AccessButton()
           }} />
@@ -247,7 +248,7 @@ const LevelController = () => {
     return(
       <div>
         {
-          tracksLoaded ? <GoButton title='Tap to begin this level' onButton={ () => {
+          introLoaded ? <GoButton title='Tap to begin this level' onButton={ () => {
         
           setAccess(true) //MUST call this from here. sigh!
           setIsPlaying( (f) => !f)
@@ -334,7 +335,7 @@ const LevelController = () => {
         
         { webaudio ? <RenderWebAudio /> : <RenderNoWebAudio /> }
         
-        <RenderNextButton />
+        { tracksLoaded && <RenderNextButton /> }
 
         <PlayersProgressBar ready={isPlaying} level={manifest.get(title)} baseLevel={levels.current.get(title)!} />
         
