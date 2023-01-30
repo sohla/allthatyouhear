@@ -1,17 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Routes, Route, Outlet, Link} from 'react-router-dom';
 import {Helmet} from "react-helmet";
-//-----------------------------------------------------------------------
-
-// import { OrientationProvider } from './AccessOrientation';
-
-
 import LevelController from './LevelController'
-// import MissingPersons from './MissingPersons'
 
 //-----------------------------------------------------------------------
-
 export default function App() {
   return (
     <div className="bg-emerald-800">
@@ -20,7 +13,7 @@ export default function App() {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Helmet>
-
+      
       <Routes>
         <Route path="levels" element={<LevelController />} /> 
         <Route path="*" element={<Home />} />
@@ -29,7 +22,10 @@ export default function App() {
   );
 }
 
+//-----------------------------------------------------------------------
 function Home() {
+  const [debug, setDebug] = useState(false);
+
   return (
     <div>
       <div className="grid grid-rows-3 gap-0 h-screen text-center">
@@ -41,6 +37,13 @@ function Home() {
         <div className='text-white'>Interactive Coding by Steph OHara</div>
         <div className='text-white'>Music Performed by</div>
         <div className='text-white pb-10'>The Letter String Quartet</div>
+
+        <div>
+          <label className='text-white pt-8 text-4xl'>
+            Debug Mode
+            <input className='w-16 h-16 m-4' type="checkbox" checked={ debug  } onChange={ () => {setDebug( (f) => !f )}}/>
+          </label>
+        </div>
 
         <Link className="bg-gray-900 text-white font-bold py-20  border-black text-2xl" to="/levels">
             TAP TO BEGIN
