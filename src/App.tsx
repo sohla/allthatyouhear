@@ -88,6 +88,8 @@ browser back button (https://stackoverflow.com/questions/55966533/show-alert-on-
 analytics
 compress images!!!
 process images
+  for f in *.jpg; do ffmpeg -i "$f" -vf scale=1200:-1 "converted/${f%%.jpg}.jpg"; done;   
+
 reshoot bg images
 
 */
