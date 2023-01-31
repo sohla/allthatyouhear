@@ -51,8 +51,8 @@ const LevelController = () => {
 
   const levels = useRef( new Map<string, BaseLevel>() )
 
-  const bg_class = introLoaded ? "100%" : "0%" 
-  const img_class = isPlaying || index > 0 ? "100%" : "0%" 
+  const bg_class = introLoaded || index === 0 ? "100%" : "0%" 
+  const img_class = isPlaying || (index > 0 && introLoaded) ? "60%" : "0%" 
 
   const history = createBrowserHistory()
 
@@ -76,9 +76,8 @@ const LevelController = () => {
     levels.current.set('level8', new Level8(manifest.get('level8')))
     levels.current.set('level9', new Level9(manifest.get('level9')))
     
-    // console.log("-->",manifest.get('level1')?.title)
 
-    // !!!! DD BACK FOR LEVEL 1
+    // !!!! ADD BACK FOR LEVEL 1
     levels.current.get('level1')?.load(manifest.get('level1'), 
       () => { setIntroLoaded(true) },
       () => { setTracksLoaded(true) },
@@ -95,9 +94,6 @@ const LevelController = () => {
         levels.current.get(title)?.stopAllSounds()
       }
     })
-
-    return () => {
-    }
     // really bad! ignore history
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index])
@@ -129,7 +125,7 @@ const LevelController = () => {
         setOutroPlaying(true)
         
         levels.current.get(title)?.playOutro(level, () => {
-          // leave for now! 
+
           setTracksLoaded(false)
           setOutroLoaded(false)
 
@@ -212,8 +208,14 @@ const LevelController = () => {
   const RenderPlaying = () => {
     return (
       <div className="bg-black bg-opacity-0 text-black font-bold w-full self-center text-2xl text-center">
-        { !outroPlaying && (index > 0) ? <div className="h-48 opacity-70 bg-[url('../public/img/MovingPhone_SlowBlack.gif')] bg-contain bg-center bg-no-repeat"></div> : <div></div>}
-        { outroPlaying ? <RenderOutro /> : <RenderTracks /> }
+        { !outroPlaying && (index > 0) ? 
+          <div className="h-48 opacity-100 bg-[url('../public/img/MovingPhone_SlowBlack.gif')] bg-contain bg-center bg-no-repeat"></div> : 
+          <div></div>
+        }
+        { outroPlaying ? 
+          <RenderOutro /> : 
+          <RenderTracks /> 
+        }
       </div>
     )
   }
@@ -228,20 +230,21 @@ const LevelController = () => {
       onTouchStartOrOnMouseDown: () => {props.onButton()},
       // onTouchEndOrOnMouseUp: () => {props.onButton()},
       touchEventOptions: {passive: false},
-
     })
 
     return (
-      <div className="fixed  text-black bottom-32 font-bold w-full self-center text-2xl text-center">
+      <div className="fixed  text-black bottom-3 font-bold w-full self-center text-2xl text-center">
         <div className=" flex justify-center items-center " {...handlers}>
           <PlayIcon color="black"/>
         </div> 
-        <div className="py-6 opacity-80">{props.title}</div>
+        <div className="py-4 opacity-80">{props.title}</div>
       </div>
     )
   }
   //-----------------------------------------------------------------------
   const RenderWebAudioButton = () => {
+    const go = (debug.isOn) ? tracksLoaded : introLoaded
+
     const AccessButton = async () => {
     
       if(webaudio) return
@@ -252,7 +255,7 @@ const LevelController = () => {
     return (
       <div>
         {
-          introLoaded ? <GoButton title='Tap to begin' onButton={ () => { 
+          go ? <GoButton title='Tap to begin' onButton={ () => { 
             setAccess(true) //MUST call this from here. sigh!
             AccessButton()
           }} />
@@ -267,11 +270,12 @@ const LevelController = () => {
   const RenderContinue = () => {
 
     const title = getLevelTitle(index - 1)
+    const go = (debug.isOn) ? tracksLoaded : introLoaded
     
     return(
       <div>
         {
-          introLoaded ? <GoButton title='Tap to begin this level' onButton={ () => {
+          go ? <GoButton title='Tap to begin this level' onButton={ () => {
         
           setAccess(true) //MUST call this from here. sigh!
           setIsPlaying( (f) => !f)
@@ -287,9 +291,10 @@ const LevelController = () => {
   }
   //-----------------------------------------------------------------------
   const RenderLoading = () => {
+    console.log("D")
     return (
       <div>
-        <div className="w-full text-center text-black mt-40 text-2xl font-bold opacity-50">loading...</div>
+        <div className="w-full text-center text-black mt-40 text-2xl font-bold opacity-100">loading...</div>
       </div>
     )
   }
@@ -316,7 +321,7 @@ const LevelController = () => {
     return (
       <div className='text-center text-black '>
         <div className='font-bold text-4xl'>🎧</div>
-        <div className='font-bold'>Best experienced on headphones</div>
+        <div className='font-bold pt-2 pb-4'>Best experienced on headphones</div>
         <div className='text-1xl'>Music & Sound Design by Biddy Connor</div>
         <div className=''>Curated by Rachael Paintin</div>
         <div className=''>Interactive Coding by Steph OHara</div>
@@ -350,14 +355,9 @@ const LevelController = () => {
 
     return(
       <div>
-        {/* <button className=" bg-gray-200 p-9 fixed bottom-0 w-full opacity-40" onClick={ () => { onFunc()} }>
-          <div>SKIP TO NEXT LEVEL</div>
-        </button> */}
-
-        <div className=" bg-green-200 p-9 fixed bottom-0 w-full opacity-50  text-center" {...handlers}>
+        <div className=" bg-green-200 p-4 fixed top-0 w-full opacity-50  text-center" {...handlers}>
           <div>SKIP TO NEXT LEVEL</div>
         </div>
-
       </div>
       )
     }
@@ -367,8 +367,8 @@ const LevelController = () => {
 
   return (
     <div className="h-screen bg-red" >
-      <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center transition-opacity duration-1000 ease-out opacity-0" style={{ backgroundImage: u, opacity:img_class}}>
-      </div>
+      <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center transition-opacity duration-600 ease-out opacity-0" 
+        style={{ backgroundImage: u, opacity:img_class}} />
       <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center transition-opacity duration-1000 ease-out opacity-0" style={{opacity:bg_class}}>
         
         { !outroPlaying && <Title floor={String(manifest.get(title)?.floor)} title={String(manifest.get(title)?.title)}/> }
@@ -377,7 +377,7 @@ const LevelController = () => {
         
         { webaudio ? <RenderWebAudio /> : <RenderNoWebAudio /> }
         
-        { tracksLoaded && debug.isOn &&  <RenderNextButton /> }
+        { debug.isOn &&  <RenderNextButton /> }
 
         <PlayersProgressBar ready={isPlaying} level={manifest.get(title)} baseLevel={levels.current.get(title)!} />
         
@@ -386,6 +386,5 @@ const LevelController = () => {
      </div>
     </div>
   )
-  
 }
 export default LevelController;
