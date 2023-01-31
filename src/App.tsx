@@ -57,7 +57,7 @@ function Home() {
     <div>
       <div className="grid grid-rows-3 gap-0 h-screen text-center text-4xl">
         <div className='text-white pt-8'>All That You Hear</div>
-        <div className='text-white'>v5.3</div>
+        <div className='text-white'>v5.4</div>
         <RenderDebug />
         
         <Link className="bg-gray-900 text-white font-bold py-20  border-black text-2xl" to="/levels">
@@ -81,21 +81,14 @@ function Home() {
 
 https://github.com/GoogleChrome/accessibility-developer-tools
 https://github.com/paypal/AATT
-
-
-
-debug mode
-
-analytics
-
 browser back button (https://stackoverflow.com/questions/55966533/show-alert-on-browser-back-button-event-on-react-js)
 
+
+
+analytics
 compress images!!!
-
 process images
-
 reshoot bg images
-
 
 */
 
