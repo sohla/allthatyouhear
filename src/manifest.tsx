@@ -19,15 +19,15 @@ export const manifest: Map<string, levelType> = new Map([
   [
     'level1', {
       floor: 'All That You Hear',
-      title: '·',
-      backgroundImg: '/img/switch.jpg',
-      introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+1.mp3',
+      title: '',
+      backgroundImg: '/img/flag.png',
+      introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+2.mp3',
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Level+2+Introduction.mp3',
       introText: 'intro',
       outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+1.mp3',
       outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Acknowledgement+of+Country+2023.mp3',
       outroText: 'Acknowledgement',
-      outroImg: '',
+      outroImg: '/img/flag.png',
       tracksText: 'Introduction and Welcome',
       tracks: [
         'https://atyh.s3.ap-southeast-2.amazonaws.com/Level+2_+WELCOME+TO+COUNTRY+06012023.mp3',

@@ -24,6 +24,8 @@ import { Level9 } from './Level9';
 
 import { start } from 'tone';
 
+import { useDebugMode } from './App';
+
 import PlayersProgressBar from './PlayersProgressBar';
 
 //-----------------------------------------------------------------------
@@ -32,7 +34,7 @@ import PlayersProgressBar from './PlayersProgressBar';
 
 const LevelController = () => {
 
-  const [index, setIndex] = useState(8) 
+  const [index, setIndex] = useState(0) 
 
   const [webaudio, setWebAudio] = useState(false)
 
@@ -50,9 +52,12 @@ const LevelController = () => {
   const levels = useRef( new Map<string, BaseLevel>() )
 
   const bg_class = introLoaded ? "100%" : "0%" 
+  const img_class = isPlaying || index > 0 ? "100%" : "0%" 
 
   const history = createBrowserHistory()
 
+  const [debug] = useDebugMode()
+  
   //-----------------------------------------------------------------------
   const getLevelTitle = (index: number) => {
     const levels = ['level1','level2','level3','level4','level5','level6','level7','level8','level9']
@@ -74,11 +79,12 @@ const LevelController = () => {
     // console.log("-->",manifest.get('level1')?.title)
 
     // !!!! DD BACK FOR LEVEL 1
-    // levels.current.get('level1')?.load(manifest.get('level1'), 
-    //   () => { setIntroLoaded(true) },
-    //   () => { setTracksLoaded(true) },
-    //   () => { setOutroLoaded(true) },
-    // )
+    levels.current.get('level1')?.load(manifest.get('level1'), 
+      () => { setIntroLoaded(true) },
+      () => { setTracksLoaded(true) },
+      () => { setOutroLoaded(true) },
+    )
+
   },[])
   //-----------------------------------------------------------------------
   useEffect( () => {
@@ -101,6 +107,12 @@ const LevelController = () => {
     if(!webaudio) return
     setIsPlaying(true)
   },[webaudio])
+
+  //-----------------------------------------------------------------------
+  useEffect(() => {
+    const title = getLevelTitle(index)
+    levels.current.get(title)?.setRates(debug.ioRate, debug.trackRate)
+  }, [debug, index])
 
   //-----------------------------------------------------------------------
   useEffect( () => {
@@ -139,10 +151,9 @@ const LevelController = () => {
   //-----------------------------------------------------------------------
   useEffect( () => {
     if(index === 0) return // don't force load level 1
-
     const title = getLevelTitle(index)
     levels.current.get(title)?.load(manifest.get(title), 
-      () => {setIntroLoaded(true)},
+      () => { setIntroLoaded(true)},
       () => {setTracksLoaded(true)},
       () => {setOutroLoaded(true)},
     )
@@ -301,6 +312,21 @@ const LevelController = () => {
     )
   }
   
+  const RenderCredits = () => {
+    return (
+      <div className='text-center text-black '>
+        <div className='font-bold text-4xl'>🎧</div>
+        <div className='font-bold'>Best experienced on headphones</div>
+        <div className='text-1xl'>Music & Sound Design by Biddy Connor</div>
+        <div className=''>Curated by Rachael Paintin</div>
+        <div className=''>Interactive Coding by Steph OHara</div>
+        <div className=''>Music Performed by</div>
+        <div className=''>The Letter String Quartet</div>
+
+      </div>
+         
+    )
+  }
   //-----------------------------------------------------------------------
   const RenderNextButton = () => {
 
@@ -341,13 +367,17 @@ const LevelController = () => {
 
   return (
     <div className="h-screen bg-red" >
-      <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center transition-opacity duration-1000 ease-out opacity-0" style={{ backgroundImage: u, opacity:bg_class}}>
+      <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center transition-opacity duration-1000 ease-out opacity-0" style={{ backgroundImage: u, opacity:img_class}}>
+      </div>
+      <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center transition-opacity duration-1000 ease-out opacity-0" style={{opacity:bg_class}}>
         
         { !outroPlaying && <Title floor={String(manifest.get(title)?.floor)} title={String(manifest.get(title)?.title)}/> }
+
+        { index === 0 && <RenderCredits />}
         
         { webaudio ? <RenderWebAudio /> : <RenderNoWebAudio /> }
         
-        { tracksLoaded && <RenderNextButton /> }
+        { tracksLoaded && debug.isOn &&  <RenderNextButton /> }
 
         <PlayersProgressBar ready={isPlaying} level={manifest.get(title)} baseLevel={levels.current.get(title)!} />
         

@@ -1,50 +1,65 @@
 // import React, { useState } from 'react';
 import './App.css';
 import { Routes, Route, Outlet, Link} from 'react-router-dom';
-import {Helmet} from "react-helmet";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import LevelController from './LevelController'
+
+import { createGlobalState } from 'react-use';
+
+export type DebugModel = {
+  isOn: boolean,
+  ioRate: number,
+  trackRate: number,
+}
+export const useDebugMode = createGlobalState<DebugModel>(() => ({ isOn: false, ioRate: 1, trackRate:1 }) )
+
+//-----------------------------------------------------------------------
+const RenderDebug = () => {
+  const [debug, setDebug] = useDebugMode();
+  
+  return (
+    <div>
+      Debug Mode
+      <label className='text-white pt-8 text-4xl'>
+        <input className='w-16 h-16 m-4' type="checkbox" checked={ debug.isOn } onChange={ () => { 
+          setDebug( (f) => (
+            f.isOn ? {isOn: false, ioRate: 1, trackRate:1 } : {isOn: true, ioRate: 4, trackRate:10 }
+            ) 
+          )}}/>
+      </label>
+    </div>
+  )
+}
 
 //-----------------------------------------------------------------------
 export default function App() {
   return (
     <div className=" bg-slate-800">
-      <Helmet>
-        <meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-      </Helmet>
-      
+      <HelmetProvider>
+        <Helmet>
+          <meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        </Helmet>
+      </HelmetProvider>
       <Routes>
         <Route path="levels" element={<LevelController />} /> 
         <Route path="*" element={<Home />} />
       </Routes>
       </div>
-  );
+  )
 }
-
 //-----------------------------------------------------------------------
 function Home() {
-  // const [debug, setDebug] = useState(false);
+  
 
   return (
     <div>
-      <div className="grid grid-rows-3 gap-0 h-screen text-center">
-        <div className='text-white pt-8 text-4xl'>All That You Hear</div>
+      <div className="grid grid-rows-3 gap-0 h-screen text-center text-4xl">
+        <div className='text-white pt-8'>All That You Hear</div>
         <div className='text-white'>v5.3</div>
-        <div className='text-white font-bold'>🎧 Best experienced on headphones</div>
-        <div className='text-white text-1xl'>Music & Sound Design by Biddy Connor</div>
-        <div className='text-white'>Curated by Rachael Paintin</div>
-        <div className='text-white'>Interactive Coding by Steph OHara</div>
-        <div className='text-white'>Music Performed by</div>
-        <div className='text-white pb-10'>The Letter String Quartet</div>
-
-        {/* <div>
-          <label className='text-white pt-8 text-4xl'>
-            Debug Mode
-            <input className='w-16 h-16 m-4' type="checkbox" checked={ debug  } onChange={ () => {setDebug( (f) => !f )}}/>
-          </label>
-        </div> */}
-
+        <RenderDebug />
+        
         <Link className="bg-gray-900 text-white font-bold py-20  border-black text-2xl" to="/levels">
             TAP TO BEGIN
         </Link>
@@ -63,69 +78,13 @@ function Home() {
 
 
 /*
-  Meeting 15th
-
-  Finishing - Shorter Version
-
-  Stairs journey has a track
-
-  Build UX/UI 
-    Please make your way to Level 2
-    Press play when you have arrived to Level 2
-
-  Google analytics
-
-  
-  28th Nov. deploy
-
-
-  internals :
-
-    refactor : names etc. add each state
-
-    refactor : config file for floors : remove duplication and only have the audio mixing/orientation code for each
-
-    stop intro when track is loaded and playing with long fadeOut
-
-    buffer system : trigger buffer loads and access to buffers
-    
-
-  level 2:
-  break up onDismount
-  
-Use composition :
-
-
-loader : props.url 
-
-
-Players:
-
-introVO 
-introSound
-
-players
-
-outroVO
-ontroSound
 
 https://github.com/GoogleChrome/accessibility-developer-tools
 https://github.com/paypal/AATT
 
 
-8/12
 
-6/1
-
-11/1
-
-
-
-13/1
-
-build level 4-9
-last level : playout : multiple tracks one after the other loading etc.
-
+debug mode
 
 analytics
 
@@ -133,9 +92,10 @@ browser back button (https://stackoverflow.com/questions/55966533/show-alert-on-
 
 compress images!!!
 
-single mono panning track version / 3D panner possible?
+process images
 
 reshoot bg images
+
 
 */
 
