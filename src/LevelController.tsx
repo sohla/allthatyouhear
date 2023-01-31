@@ -138,7 +138,7 @@ const LevelController = () => {
               setIndex((f) => f + 1)
             }, 1000)
 
-          }, 3000)
+          }, 10000)
         })  
       })
     })

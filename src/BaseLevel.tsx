@@ -130,7 +130,7 @@ export abstract class BaseLevel {
       const player = this.players.tonePlayers.get(track)
       const ct = player?.toSeconds(Transport.position) || 0
       const dt = player?.buffer.duration || 1
-      return (ct / dt) * 100
+      return ( (ct * this.trackRate)  / dt) * 100
     }
     return 0
   }
