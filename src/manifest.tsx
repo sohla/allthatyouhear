@@ -45,7 +45,7 @@ export const manifest: Map<string, levelType> = new Map([
       outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
       outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+3.mp3',
       outroText: 'Make your way to Level 3',
-      outroImg: '/img/stairs2.jpg',
+      outroImg: '/img/stairs3.jpg',
       tracksText: 'Move through the corridors to discover layers of sound.',
       tracks: [
         'https://atyh.s3.ap-southeast-2.amazonaws.com/LIFTS+1+Side+A.mp3',
@@ -64,7 +64,7 @@ export const manifest: Map<string, levelType> = new Map([
       outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
       outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+4.mp3',
       outroText: 'Make your way to Level 4',
-      outroImg: '/img/stairs2.jpg',
+      outroImg: '/img/stairs3.jpg',
       tracksText: 'Move through the corridors to discover layers of sound.',
       tracks: [
         'https://atyh.s3.ap-southeast-2.amazonaws.com/The+Building_Main+Track+211122.mp3',
@@ -87,7 +87,7 @@ export const manifest: Map<string, levelType> = new Map([
       outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
       outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+5.mp3',
       outroText: 'Make your way to Level 5',
-      outroImg: '/img/stairs2.jpg',
+      outroImg: '/img/stairs3.jpg',
       tracksText: 'Move through the corridors to discover layers of sound.',
       tracks: [
         'https://atyh.s3.ap-southeast-2.amazonaws.com/GHOSTS+1_Music+21112022.mp3',
@@ -109,7 +109,7 @@ export const manifest: Map<string, levelType> = new Map([
       outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
       outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+6.mp3',
       outroText: 'Make your way to Level 6',
-      outroImg: '/img/stairs2.jpg',
+      outroImg: '/img/stairs3.jpg',
       tracksText: 'Move through the corridors to discover layers of sound.',
       tracks: [
         'https://atyh.s3.ap-southeast-2.amazonaws.com/LEVEL+5_Sounds+MAIN+TRACK+03012023.mp3',
@@ -131,7 +131,7 @@ export const manifest: Map<string, levelType> = new Map([
       outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
       outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+7.mp3',
       outroText: 'Make your way to Level 7',
-      outroImg: '/img/stairs2.jpg',
+      outroImg: '/img/stairs3.jpg',
       tracksText: 'Move through the corridors to discover layers of sound.',
       tracks: [
         'https://atyh.s3.ap-southeast-2.amazonaws.com/Lifts+2+Side+A.mp3',
@@ -153,7 +153,7 @@ export const manifest: Map<string, levelType> = new Map([
       outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
       outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+8.mp3',
       outroText: 'Make your way to Level 8',
-      outroImg: '/img/stairs2.jpg',
+      outroImg: '/img/stairs3.jpg',
       tracksText: 'Move through the corridors to discover layers of sound.',
       tracks: [
         'https://atyh.s3.ap-southeast-2.amazonaws.com/Layer+Upon+Layer+Main+Track+02012023.mp3',
@@ -175,7 +175,7 @@ export const manifest: Map<string, levelType> = new Map([
       outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
       outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+9.mp3',
       outroText: 'Make your way to Level 9',
-      outroImg: '/img/stairs2.jpg',
+      outroImg: '/img/stairs3.jpg',
       tracksText: 'Move through the corridors to discover layers of sound.',
       tracks: [
         'https://atyh.s3.ap-southeast-2.amazonaws.com/GHOSTS+2_Music+21112022.mp3',
