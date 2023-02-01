@@ -359,8 +359,8 @@ const LevelController = () => {
 
     return(
       <div>
-        <div className=" bg-green-200 p-2 m-4 fixed top-0 -right-4 opacity-50 text-center rounded-l-full" {...handlers}>
-          <div className='font-bold'>NEXT LEVEL</div>
+        <div className=" bg-green-900 p-2 m-4 fixed top-0 -right-4  text-center rounded-l-full" {...handlers}>
+          <div className='text-white font-bold'>NEXT LEVEL</div>
         </div>
       </div>
       )
@@ -381,7 +381,7 @@ const LevelController = () => {
         
         { webaudio ? <RenderWebAudio /> : <RenderNoWebAudio /> }
         
-        { debug.isOn &&  <RenderNextButton /> }
+        { (debug.isOn && tracksLoaded) && <RenderNextButton /> }
 
         <PlayersProgressBar ready={isPlaying} level={manifest.get(title)} baseLevel={levels.current.get(title)!} />
         

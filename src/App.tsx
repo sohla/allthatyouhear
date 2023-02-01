@@ -20,7 +20,7 @@ const RenderDebug = () => {
   return (
     <div>
       Debug Mode
-      <label className='text-white pt-8 text-4xl'>
+      <label className='text-black pt-8 text-4xl'>
         <input className='w-16 h-16 m-4' type="checkbox" checked={ debug.isOn } onChange={ () => { 
           setDebug( (f) => (
             f.isOn ? {isOn: false, ioRate: 1, trackRate:1 } : {isOn: true, ioRate: 4, trackRate:10 }
@@ -34,7 +34,7 @@ const RenderDebug = () => {
 //-----------------------------------------------------------------------
 export default function App() {
   return (
-    <div className=" bg-slate-800">
+    <div className=" bg-slate-400">
       <HelmetProvider>
         <Helmet>
           <meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0" />
@@ -55,12 +55,14 @@ function Home() {
 
   return (
     <div>
+        {/* <iframe src="https://www.allthatyouhear.au/faq" width="100%" height="600"></iframe> */}
       <div className="grid grid-rows-3 gap-0 h-screen text-center text-4xl">
-        <div className='text-white pt-8'>All That You Hear</div>
-        <div className='text-white'>v5.6</div>
+        <div className='text-black pt-8'>All That You Hear</div>
+        <div className='text-black'>v5.6</div>
+
         <RenderDebug />
         
-        <Link className="bg-gray-900 text-white font-bold py-20  border-black text-2xl" to="/levels">
+        <Link className="bg-slate-900 text-white font-bold py-20  border-black text-2xl" to="/levels">
             TAP TO BEGIN
         </Link>
   
@@ -87,6 +89,10 @@ browser back button (https://stackoverflow.com/questions/55966533/show-alert-on-
 
 
 import { BrowserView, MobileView } from 'react-device-detect';
+info opens modal : npm i react-responsive-modal
+
+
+
 reshoot bg images
 
 */
