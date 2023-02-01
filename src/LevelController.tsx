@@ -28,6 +28,8 @@ import { useDebugMode } from './App';
 
 import PlayersProgressBar from './PlayersProgressBar';
 
+import ReactGA from "react-ga4"
+
 //-----------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------
@@ -148,6 +150,8 @@ const LevelController = () => {
   useEffect( () => {
     if(index === 0) return // don't force load level 1
     const title = getLevelTitle(index)
+    ReactGA.send({ hitType: "pageview", page: "/"+title })
+    console.log("ga -> /"+title)
     levels.current.get(title)?.load(manifest.get(title), 
       () => { setIntroLoaded(true)},
       () => {setTracksLoaded(true)},
@@ -207,9 +211,9 @@ const LevelController = () => {
   //-----------------------------------------------------------------------
   const RenderPlaying = () => {
     return (
-      <div className="bg-black bg-opacity-0 text-black font-bold w-full self-center text-2xl text-center">
+      <div className="bg-black bg-opacity-0 text-black font-bold w-full self-center text-2xl text-center fixed bottom-32">
         { !outroPlaying && (index > 0) ? 
-          <div className="h-48 opacity-100 bg-[url('../public/img/MovingPhone_SlowBlack.gif')] bg-contain bg-center bg-no-repeat"></div> : 
+          <div className="h-28 opacity-100 bg-[url('../public/img/MovingPhone_SlowBlack.gif')] bg-contain bg-center bg-no-repeat"></div> : 
           <div></div>
         }
         { outroPlaying ? 
@@ -294,7 +298,7 @@ const LevelController = () => {
     console.log("D")
     return (
       <div>
-        <div className="w-full text-center text-black mt-40 text-2xl font-bold opacity-100">loading...</div>
+        <div className="w-full text-center text-black fixed bottom-24 text-2xl font-bold opacity-100">loading...</div>
       </div>
     )
   }
@@ -355,8 +359,8 @@ const LevelController = () => {
 
     return(
       <div>
-        <div className=" bg-green-200 p-4 fixed top-0 w-full opacity-50  text-center" {...handlers}>
-          <div>SKIP TO NEXT LEVEL</div>
+        <div className=" bg-green-200 p-2 m-4 fixed top-0 -right-4 opacity-50 text-center rounded-l-full" {...handlers}>
+          <div className='font-bold'>NEXT LEVEL</div>
         </div>
       </div>
       )

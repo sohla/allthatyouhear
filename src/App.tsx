@@ -82,14 +82,11 @@ function Home() {
 https://github.com/GoogleChrome/accessibility-developer-tools
 https://github.com/paypal/AATT
 browser back button (https://stackoverflow.com/questions/55966533/show-alert-on-browser-back-button-event-on-react-js)
+  for f in *.jpg; do ffmpeg -i "$f" -vf scale=1200:-1 "converted/${f%%.jpg}.jpg"; done;   
 
 
 
 analytics
-compress images!!!
-process images
-  for f in *.jpg; do ffmpeg -i "$f" -vf scale=1200:-1 "converted/${f%%.jpg}.jpg"; done;   
-
 reshoot bg images
 
 */
