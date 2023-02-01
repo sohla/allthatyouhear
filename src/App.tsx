@@ -86,7 +86,7 @@ browser back button (https://stackoverflow.com/questions/55966533/show-alert-on-
 
 
 
-analytics
+import { BrowserView, MobileView } from 'react-device-detect';
 reshoot bg images
 
 */
