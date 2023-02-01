@@ -28,7 +28,7 @@ import { useDebugMode } from './App';
 
 import PlayersProgressBar from './PlayersProgressBar';
 
-import ReactGA from "react-ga4"
+import ReactGA from "react-ga4";
 
 //-----------------------------------------------------------------------
 //
@@ -53,7 +53,7 @@ const LevelController = () => {
 
   const levels = useRef( new Map<string, BaseLevel>() )
 
-  const bg_class = introLoaded || index === 0 ? "100%" : "0%" 
+  const bg_class = introLoaded  ? "100%" : "0%" 
   const img_class = isPlaying || (index > 0 && introLoaded) ? "60%" : "0%" 
 
   const history = createBrowserHistory()
@@ -324,7 +324,7 @@ const LevelController = () => {
   const RenderCredits = () => {
     return (
       <div className='text-center text-black '>
-        <div className='font-bold text-4xl'>🎧</div>
+        <div className='font-bold text-4xl bg-black mx-40 p-2  rounded-full'>🎧</div>
         <div className='font-bold pt-2 pb-4'>Best experienced on headphones</div>
         <div className='text-1xl'>Music & Sound Design by Biddy Connor</div>
         <div className=''>Curated by Rachael Paintin</div>
@@ -373,7 +373,7 @@ const LevelController = () => {
     <div className="h-screen bg-red" >
       <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center transition-opacity duration-600 ease-out opacity-0" 
         style={{ backgroundImage: u, opacity:img_class}} />
-      <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center transition-opacity duration-1000 ease-out opacity-0" style={{opacity:bg_class}}>
+      <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center items-center transition-opacity duration-1000 ease-out opacity-0" style={{opacity:bg_class}}>
         
         { !outroPlaying && <Title floor={String(manifest.get(title)?.floor)} title={String(manifest.get(title)?.title)}/> }
 
@@ -385,7 +385,7 @@ const LevelController = () => {
 
         <PlayersProgressBar ready={isPlaying} level={manifest.get(title)} baseLevel={levels.current.get(title)!} />
         
-        <InfoIcon color={"black"}/> 
+        { index === 0 && <InfoIcon color={"black"}/> }
         
      </div>
     </div>

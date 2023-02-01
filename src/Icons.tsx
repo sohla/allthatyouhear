@@ -1,4 +1,3 @@
-import React from 'react';
 
 // source : https://heroicons.com
 //https://react-icons.github.io/react-icons/search
