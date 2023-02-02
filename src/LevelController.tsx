@@ -59,7 +59,7 @@ const LevelController = () => {
   const history = createBrowserHistory()
 
   const [debug] = useDebugMode()
-  
+
   //-----------------------------------------------------------------------
   const getLevelTitle = (index: number) => {
     const levels = ['level1','level2','level3','level4','level5','level6','level7','level8','level9']
@@ -79,14 +79,15 @@ const LevelController = () => {
     levels.current.set('level9', new Level9(manifest.get('level9')))
     
 
-    // !!!! ADD BACK FOR LEVEL 1
-    levels.current.get('level1')?.load(manifest.get('level1'), 
-      () => { setIntroLoaded(true) },
-      () => { setTracksLoaded(true) },
-      () => { setOutroLoaded(true) },
-    )
+    if(index === 0){
+      levels.current.get('level1')?.load(manifest.get('level1'), 
+        () => { setIntroLoaded(true) },
+        () => { setTracksLoaded(true) },
+        () => { setOutroLoaded(true) },
+      )
+    }
 
-  },[])
+  },[index])
   //-----------------------------------------------------------------------
   useEffect( () => {
     let unlisten = history.listen(({ action, location }) => {
@@ -120,6 +121,7 @@ const LevelController = () => {
     const title = getLevelTitle(index)
     const level = manifest.get(title)
 
+    
     levels.current.get(title)?.playIntro(level, () => {
 
       levels.current.get(title)?.playTracks(level, () => {
@@ -137,7 +139,7 @@ const LevelController = () => {
             setTimeout(function() { // delay after fade has finished
               setIsPlaying(false)
               setOutroPlaying(false)
-              setIndex((f) => f + 1)
+              setIndex(index + 1)
             }, 1000)
 
           }, 10000)
@@ -295,7 +297,6 @@ const LevelController = () => {
   }
   //-----------------------------------------------------------------------
   const RenderLoading = () => {
-    console.log("D")
     return (
       <div>
         <div className="w-full text-center text-black fixed bottom-24 text-2xl font-bold opacity-100">loading...</div>
@@ -348,7 +349,7 @@ const LevelController = () => {
       setTracksLoaded(false)
       setOutroLoaded(false)
       setTimeout(function() {
-        setIndex((f) => f + 1)
+        setIndex(index + 1)
       }, 1000)
     }
 
@@ -367,13 +368,20 @@ const LevelController = () => {
     }
   //-----------------------------------------------------------------------
   const title = getLevelTitle(index)
-  const u = outroPlaying ? "url("+manifest.get(title)?.outroImg+")" :  "url("+manifest.get(title)?.backgroundImg+")"
+  // const u = outroPlaying ? "url("+manifest.get(title)?.outroImg+")" :  "url("+manifest.get(title)?.backgroundImg+")"
+  const imgSrc = outroPlaying ? manifest.get(title)?.outroImg : manifest.get(title)?.backgroundImg
 
   return (
     <div className="h-screen bg-red" >
-      <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center transition-opacity duration-600 ease-out opacity-0" 
-        style={{ backgroundImage: u, opacity:img_class}} />
-      <div className="bg-cover bg-center fixed top-0 w-full h-screen justify-center items-center transition-opacity duration-1000 ease-out opacity-0" style={{opacity:bg_class}}>
+      <img 
+        src={imgSrc} 
+        alt="background" 
+        className="fixed top-0 w-max object-cover h-screen justify-center transition-opacity duration-600 ease-out opacity-0"
+        style={{ opacity:img_class}}>
+      </img>
+      <div 
+        className="bg-cover bg-center fixed top-0 w-full h-screen justify-center items-center transition-opacity duration-1000 ease-out opacity-0" 
+        style={{opacity:bg_class}}>
         
         { !outroPlaying && <Title floor={String(manifest.get(title)?.floor)} title={String(manifest.get(title)?.title)}/> }
 
@@ -381,7 +389,7 @@ const LevelController = () => {
         
         { webaudio ? <RenderWebAudio /> : <RenderNoWebAudio /> }
         
-        { (debug.isOn && tracksLoaded) && <RenderNextButton /> }
+        { (debug.isOn && tracksLoaded && index < 8) && <RenderNextButton /> }
 
         <PlayersProgressBar ready={isPlaying} level={manifest.get(title)} baseLevel={levels.current.get(title)!} />
         
