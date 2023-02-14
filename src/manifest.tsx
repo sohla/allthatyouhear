@@ -16,6 +16,26 @@ export type levelType = {
 };
 
 export const manifest: Map<string, levelType> = new Map([
+  // [
+  //   'level0', {
+  //     floor: 'tester',
+  //     title: 'debug',
+  //     backgroundImg: '/img/level2.jpg',
+  //     introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+2.mp3',
+  //     introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/2.+Welcome+to+the+second+floor_Lizzy.mp3',
+  //     introText: 'intro',
+  //     outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Travelling+Loop+06012023.mp3',
+  //     outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Make+Your+Way+to+level+3.mp3',
+  //     outroText: 'debug',
+  //     outroImg: '/img/stairs3.jpg',
+  //     tracksText: 'Introduction and Welcome',
+  //     tracks: [
+  //       'https://atyh.s3.ap-southeast-2.amazonaws.com/whiteNoise.mp3',
+  //       'https://atyh.s3.ap-southeast-2.amazonaws.com/sin.mp3',
+  //     ],
+  //   }
+  // ],
+
   [
     'level1', {
       floor: 'All That You Hear',

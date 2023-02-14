@@ -6,7 +6,7 @@ import {Player, Transport } from 'tone';
 //-----------------------------------------------------------------------
 export abstract class BaseLevel {
   
-  players = new Players()
+  players: Players = new Players()
   trackRate = 1
   ioRate = 1
   
@@ -50,12 +50,10 @@ export abstract class BaseLevel {
   stopAllSounds() {
     
     console.log("%c stopping all sounds...", "color: #a44;");
-
     this.players.tonePlayers.forEach( (player: Player) => {
       player.stop()
       player.disconnect()
       player.dispose()
-
     })
 
   }
@@ -64,11 +62,11 @@ export abstract class BaseLevel {
   stopOutroSound(level: levelType | undefined) {
     
     console.log("%c stop outro sound...", "color: #a44;");
-
     const t = level?.outroSound
     if(t) {
       const player = this.players.tonePlayers.get(t) 
       if(player){
+        console.log("%c stop outro sound " + t + "", "color: #a44;");
         player.stop()
         player.disconnect()
         player.dispose()
@@ -79,7 +77,7 @@ export abstract class BaseLevel {
   playOutro(level: levelType | undefined, onOutroEnded: () => void) {
 
     console.log("%c playing outro...", "color: #4a4;");
-    
+    console.log("play out" + this.players)
     const t = level?.outroVO
     if(t) {
       const player = this.players.tonePlayers.get(t) 
@@ -95,7 +93,7 @@ export abstract class BaseLevel {
   playTracks(level: levelType | undefined, onTracksEnded: () => void) {
 
     console.log("%c playing tracks...", "color: #44a;")
-
+    console.log("play tracks " + this.players)
     Transport.position = 0
     Transport.start()
 
@@ -113,7 +111,7 @@ export abstract class BaseLevel {
 
           Transport.position = 0
           Transport.stop()
-
+          console.log("tracks stop" + this.players)
         }
       }
     }

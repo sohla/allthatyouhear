@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import './App.css';
 import { createBrowserHistory } from "history";
 import { useSwipeable } from 'react-swipeable';
@@ -36,7 +36,7 @@ import ReactGA from "react-ga4";
 
 const LevelController = () => {
 
-  const [index, setIndex] = useState(0) 
+  const [index, setIndex] = useState(1) 
 
   const [webaudio, setWebAudio] = useState(false)
 
@@ -67,7 +67,9 @@ const LevelController = () => {
   }
   
   //-----------------------------------------------------------------------
-  useEffect( () => {
+  
+  useMemo(() => {
+    
     levels.current.set('level1', new Level1(manifest.get('level1')))
     levels.current.set('level2', new Level2(manifest.get('level2')))
     levels.current.set('level3', new Level3(manifest.get('level3')))
@@ -78,16 +80,12 @@ const LevelController = () => {
     levels.current.set('level8', new Level8(manifest.get('level8')))
     levels.current.set('level9', new Level9(manifest.get('level9')))
     
-
-    if(index === 0){
-      levels.current.get('level1')?.load(manifest.get('level1'), 
-        () => { setIntroLoaded(true) },
-        () => { setTracksLoaded(true) },
-        () => { setOutroLoaded(true) },
-      )
-    }
-
-  },[index])
+    // levels.current.get('level1')?.load(manifest.get('level1'), 
+    //   () => { setIntroLoaded(true) },
+    //   () => { setTracksLoaded(true) },
+    //   () => { setOutroLoaded(true) },
+    // )
+  },[])
   //-----------------------------------------------------------------------
   useEffect( () => {
     let unlisten = history.listen(({ action, location }) => {
@@ -126,9 +124,11 @@ const LevelController = () => {
 
       levels.current.get(title)?.playTracks(level, () => {
 
+        
         setOutroPlaying(true)
         
         levels.current.get(title)?.playOutro(level, () => {
+
 
           setTracksLoaded(false)
           setOutroLoaded(false)
@@ -140,6 +140,7 @@ const LevelController = () => {
               setIsPlaying(false)
               setOutroPlaying(false)
               setIndex(index + 1)
+              
             }, 1000)
 
           }, 10000)
@@ -177,6 +178,7 @@ const LevelController = () => {
     console.log("access err:",error?.message)
   },[error])
   
+  
   //-----------------------------------------------------------------------
   useEffect( () => {
     if(!access) return
@@ -187,6 +189,13 @@ const LevelController = () => {
     levels.current.get(title)?.onOrientationData(manifest.get(title), v)
   },[access, orientation, index])
 
+
+  useEffect( () => {
+    return () => {
+      console.log("level controller unmounting...")
+    }
+  },[])
+  
   //-----------------------------------------------------------------------
   const RenderTracks = () => {
     const title = getLevelTitle(index)
@@ -275,7 +284,6 @@ const LevelController = () => {
   //-----------------------------------------------------------------------
   const RenderContinue = () => {
 
-    const title = getLevelTitle(index - 1)
     const go = (debug.isOn) ? tracksLoaded : introLoaded
     
     return(
@@ -284,9 +292,13 @@ const LevelController = () => {
           go ? <GoButton title='Tap to begin this level' onButton={ () => {
         
           setAccess(true) //MUST call this from here. sigh!
-          setIsPlaying( (f) => !f)
-          
+          setIsPlaying(true)
+          console.log(index)
+
           if(index > 0) {
+            const title = getLevelTitle(index - 1)
+            console.log("TITLE" + title)
+            console.log("level" + levels.current.keys)
             levels.current.get(title)?.stopOutroSound(manifest.get(title))
           }
         } }/>
