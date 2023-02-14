@@ -58,7 +58,7 @@ function Home() {
         {/* <iframe src="https://www.allthatyouhear.au/faq" width="100%" height="600"></iframe> */}
       <div className="grid grid-rows-3 gap-0 h-screen text-center text-4xl">
         <div className='text-black pt-8'>All That You Hear</div>
-        <div className='text-black'>v5.7</div>
+        <div className='text-black'>v5.8</div>
 
         <RenderDebug />
         

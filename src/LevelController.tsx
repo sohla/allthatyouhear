@@ -36,7 +36,7 @@ import ReactGA from "react-ga4";
 
 const LevelController = () => {
 
-  const [index, setIndex] = useState(1) 
+  const [index, setIndex] = useState(0) 
 
   const [webaudio, setWebAudio] = useState(false)
 
@@ -80,11 +80,11 @@ const LevelController = () => {
     levels.current.set('level8', new Level8(manifest.get('level8')))
     levels.current.set('level9', new Level9(manifest.get('level9')))
     
-    // levels.current.get('level1')?.load(manifest.get('level1'), 
-    //   () => { setIntroLoaded(true) },
-    //   () => { setTracksLoaded(true) },
-    //   () => { setOutroLoaded(true) },
-    // )
+    levels.current.get('level1')?.load(manifest.get('level1'), 
+      () => { setIntroLoaded(true) },
+      () => { setTracksLoaded(true) },
+      () => { setOutroLoaded(true) },
+    )
   },[])
   //-----------------------------------------------------------------------
   useEffect( () => {
@@ -293,12 +293,9 @@ const LevelController = () => {
         
           setAccess(true) //MUST call this from here. sigh!
           setIsPlaying(true)
-          console.log(index)
 
           if(index > 0) {
             const title = getLevelTitle(index - 1)
-            console.log("TITLE" + title)
-            console.log("level" + levels.current.keys)
             levels.current.get(title)?.stopOutroSound(manifest.get(title))
           }
         } }/>
@@ -337,7 +334,7 @@ const LevelController = () => {
   const RenderCredits = () => {
     return (
       <div className='text-center text-black '>
-        <div className='font-bold text-4xl bg-black mx-40 p-2  rounded-full'>🎧</div>
+        <div className='font-bold text-4xl bg-black w-16 mx-auto  p-2  rounded-full'>🎧</div>
         <div className='font-bold pt-2 pb-4'>Best experienced on headphones</div>
         <div className='text-1xl'>Music & Sound Design by Biddy Connor</div>
         <div className=''>Curated by Rachael Paintin</div>
