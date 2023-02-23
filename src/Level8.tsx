@@ -18,8 +18,8 @@ export class Level8 extends BaseLevel{
   //-----------------------------------------------------------------------
   playIntro(level: levelType | undefined, onIntroEnded: () => void){
     super.playIntro(level, onIntroEnded)
-    this.players.playIntroSound(level, {playbackRate:this.ioRate, volume:-10, offset:0, fade:0, loop: false})
-    this.players.playIntroVO(level, {playbackRate:this.ioRate, volume:-6, offset:2, fade:0, loop: false})
+    this.players.playIntroSound(level, {playbackRate:this.ioRate, volume:-14, offset:0, fade:0, loop: false})
+    this.players.playIntroVO(level, {playbackRate:this.ioRate, volume:-10, offset:2, fade:0, loop: false})
   }
 
   
@@ -70,7 +70,7 @@ playOutro(level: levelType | undefined, onOutroEnded: () => void){
         if(p1 && p2 && p3){
 
           // p1 : do nothing
-          // p1.volume.value = -3
+          p1.volume.value = -6
           
           // p2
           // p2.volume.value = 3 //-( (v.y) * 90)

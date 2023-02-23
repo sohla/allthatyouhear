@@ -54,7 +54,7 @@ const LevelController = () => {
   const levels = useRef( new Map<string, BaseLevel>() )
 
   const bg_class = introLoaded  ? "100%" : "0%" 
-  const img_class = isPlaying || (index > 0 && introLoaded) ? "60%" : "0%" 
+  const img_class = isPlaying || (index > 0 && introLoaded) ? "50%" : "0%" 
 
   const history = createBrowserHistory()
 
@@ -224,7 +224,7 @@ const LevelController = () => {
     return (
       <div className="bg-black bg-opacity-0 text-black font-bold w-full self-center text-2xl text-center fixed bottom-32">
         { !outroPlaying && (index > 0) ? 
-          <div className="h-28 opacity-100 bg-[url('../public/img/MovingPhone_SlowBlack.gif')] bg-contain bg-center bg-no-repeat"></div> : 
+          <div className="h-20 opacity-80 bg-[url('../public/img/MovingPhone_SlowBlack.gif')] bg-contain bg-center bg-no-repeat"></div> : 
           <div></div>
         }
         { outroPlaying ? 
@@ -248,11 +248,11 @@ const LevelController = () => {
     })
 
     return (
-      <div className="fixed  text-black bottom-3 font-bold w-full self-center text-2xl text-center">
+      <div className="fixed  text-black bottom-0 font-bold w-full self-center text-2xl text-center">
         <div className=" flex justify-center items-center " {...handlers}>
-          <PlayIcon color="black"/>
+          <PlayIcon color="MidnightBlue"/>
         </div> 
-        <div className="py-4 opacity-80">{props.title}</div>
+        <div className="pb-4 opacity-80">{props.title}</div>
       </div>
     )
   }
@@ -334,7 +334,7 @@ const LevelController = () => {
   const RenderCredits = () => {
     return (
       <div className='text-center text-black '>
-        <div className='font-bold text-4xl bg-black w-16 mx-auto  p-2  rounded-full'>🎧</div>
+        <div className='font-bold text-4xl bg-black w-16 mx-auto h-16 pt-3 rounded-full'>🎧</div>
         <div className='font-bold pt-2 pb-4'>Best experienced on headphones</div>
         <div className='text-1xl'>Music & Sound Design by Biddy Connor</div>
         <div className=''>Curated by Rachael Paintin</div>
@@ -385,7 +385,7 @@ const LevelController = () => {
       <img 
         src={imgSrc} 
         alt="background" 
-        className="fixed top-0 w-max object-cover h-screen justify-center transition-opacity duration-600 ease-out opacity-0"
+        className="object-cover w-full h-screen bg-center bg-no-repeat mb-8 transition-opacity duration-600 ease-out opacity-0"
         style={{ opacity:img_class}}>
       </img>
       <div 
@@ -394,7 +394,7 @@ const LevelController = () => {
         
         { !outroPlaying && <Title floor={String(manifest.get(title)?.floor)} title={String(manifest.get(title)?.title)}/> }
 
-        { index === 0 && <RenderCredits />}
+        { index === 0 && !isPlaying && <RenderCredits />}
         
         { webaudio ? <RenderWebAudio /> : <RenderNoWebAudio /> }
         
@@ -402,7 +402,7 @@ const LevelController = () => {
 
         <PlayersProgressBar ready={isPlaying} level={manifest.get(title)} baseLevel={levels.current.get(title)!} />
         
-        { index === 0 && <InfoIcon color={"black"}/> }
+        { index === 0 && <InfoIcon color={"MidnightBlue"}/> }
         
      </div>
     </div>

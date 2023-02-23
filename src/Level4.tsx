@@ -70,7 +70,7 @@ playOutro(level: levelType | undefined, onOutroEnded: () => void){
         if(p1 && p2 && p3){
 
           // p1 : do nothing
-          p1.volume.value = -3
+          p1.volume.value = -9
           
           // p2
           p2.volume.value = 3 //-( (v.y) * 90)
