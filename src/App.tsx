@@ -11,7 +11,7 @@ export type DebugModel = {
   ioRate: number,
   trackRate: number,
 }
-export const useDebugMode = createGlobalState<DebugModel>(() => ({ isOn: true, ioRate: 1, trackRate:1 }) )
+export const useDebugMode = createGlobalState<DebugModel>(() => ({ isOn: false, ioRate: 1, trackRate:1 }) )
 
 //-----------------------------------------------------------------------
 const RenderDebug = () => {

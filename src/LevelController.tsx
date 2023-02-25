@@ -262,7 +262,7 @@ const LevelController = () => {
 
     const AccessButton = async () => {
     
-      // if(webaudio) return
+      if(webaudio) return
       await start()
       setWebAudio(true)
     }
@@ -271,8 +271,8 @@ const LevelController = () => {
       <div>
         {
           go ? <GoButton title='Tap to begin' onButton={ () => { 
-            AccessButton()
             setAccess(true) //MUST call this from here. sigh!
+            AccessButton()
           }} />
           :
           <RenderLoading />
