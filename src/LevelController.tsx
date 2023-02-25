@@ -262,7 +262,7 @@ const LevelController = () => {
 
     const AccessButton = async () => {
     
-      if(webaudio) return
+      // if(webaudio) return
       await start()
       setWebAudio(true)
     }
