@@ -56,7 +56,7 @@ export const manifest: Map<string, levelType> = new Map([
   ],
   [
     'level2', {
-      floor: 'Level',
+      floor: '',
       title: '2',
       backgroundImg: '/img/level1.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+2.mp3',
@@ -75,7 +75,7 @@ export const manifest: Map<string, levelType> = new Map([
   ],
   [
     'level3', {
-      floor: 'Level',
+      floor: '',
       title: '',
       backgroundImg: '/img/level3.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+3.mp3',
@@ -97,7 +97,7 @@ export const manifest: Map<string, levelType> = new Map([
   ],
   [
     'level4', {
-      floor: 'Level',
+      floor: '',
       title: '',
       backgroundImg: '/img/level4.jpg',
 
@@ -120,7 +120,7 @@ export const manifest: Map<string, levelType> = new Map([
   ],  
   [
     'level5', {
-      floor: 'Level',
+      floor: '',
       title: '',
       backgroundImg: '/img/level5.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+2.mp3',
@@ -142,7 +142,7 @@ export const manifest: Map<string, levelType> = new Map([
   ],   
   [
     'level6', {
-      floor: 'Level',
+      floor: '',
       title: '',
       backgroundImg: '/img/level6.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+3.mp3',
@@ -164,7 +164,7 @@ export const manifest: Map<string, levelType> = new Map([
   ],      
   [
     'level7', {
-      floor: 'Level',
+      floor: '',
       title: '',
       backgroundImg: '/img/level7.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+1.mp3',
@@ -186,7 +186,7 @@ export const manifest: Map<string, levelType> = new Map([
   ],      
   [
     'level8', {
-      floor: 'Level',
+      floor: '',
       title: '',
       backgroundImg: '/img/level8.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+2.mp3',
@@ -209,7 +209,7 @@ export const manifest: Map<string, levelType> = new Map([
   ],   
   [
     'level9', {
-      floor: 'Level',
+      floor: '',
       title: '',
       backgroundImg: '/img/level9.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+3.mp3',
