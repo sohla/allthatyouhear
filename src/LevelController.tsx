@@ -271,8 +271,8 @@ const LevelController = () => {
       <div>
         {
           go ? <GoButton title='Tap to begin' onButton={ () => { 
-            setAccess(true) //MUST call this from here. sigh!
             AccessButton()
+            setAccess(true) //MUST call this from here. sigh!
           }} />
           :
           <RenderLoading />
