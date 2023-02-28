@@ -23,7 +23,7 @@ const RenderDebug = () => {
       <label className='text-black pt-8 text-4xl'>
         <input className='w-16 h-16 m-4' type="checkbox" checked={ debug.isOn } onChange={ () => { 
           setDebug( (f) => (
-            f.isOn ? {isOn: false, ioRate: 1, trackRate:1 } : {isOn: true, ioRate: 4, trackRate:10 }
+            f.isOn ? {isOn: false, ioRate: 1, trackRate:1 } : {isOn: true, ioRate: 1, trackRate:1 }
             ) 
           )}}/>
       </label>
