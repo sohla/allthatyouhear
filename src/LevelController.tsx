@@ -54,7 +54,7 @@ const LevelController = () => {
   const levels = useRef( new Map<string, BaseLevel>() )
 
   const bg_class = introLoaded  ? "100%" : "0%" 
-  const img_class = isPlaying || (index > 0 && introLoaded) ? "50%" : "0%" 
+  const img_class = isPlaying || (index > 0 && introLoaded) ? "100%" : "0%" 
 
   const history = createBrowserHistory()
 
@@ -202,7 +202,7 @@ const LevelController = () => {
     const text = manifest.get(title)?.tracksText
 
     return ( 
-      <div className="p-6 text-black font-bold text-2xl w-full self-center text-center">
+      <div className=" text-black font-bold text-2xl w-full self-center text-center fixed bottom-24">
         {text}
       </div>
     )
@@ -222,7 +222,7 @@ const LevelController = () => {
   //-----------------------------------------------------------------------
   const RenderPlaying = () => {
     return (
-      <div className="bg-black bg-opacity-0 text-black font-bold w-full self-center text-2xl text-center fixed bottom-32">
+      <div className="bg-black bg-opacity-0 text-black font-bold w-full self-center text-2xl text-center fixed bottom-4">
         { !outroPlaying && (index > 0) ? 
           <div className="h-20 opacity-80 bg-[url('../public/img/MovingPhone_SlowBlack.gif')] bg-contain bg-center bg-no-repeat"></div> : 
           <div></div>

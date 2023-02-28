@@ -45,7 +45,7 @@ export const manifest: Map<string, levelType> = new Map([
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Level+2+Introduction.mp3',
       introText: 'intro',
       outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+1.mp3',
-      outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Acknowledgement+of+Country+2023.mp3',
+      outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Acknowledgement+of+Country+2023_MakeYourWayLevel2.mp3',
       outroText: 'Acknowledgement',
       outroImg: '/img/flag.png',
       tracksText: 'Introduction and Welcome',
@@ -57,8 +57,8 @@ export const manifest: Map<string, levelType> = new Map([
   [
     'level2', {
       floor: '',
-      title: '2',
-      backgroundImg: '/img/level1.jpg',
+      title: '',
+      backgroundImg: '/img/L2.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+2.mp3',
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/2.+Welcome+to+the+second+floor_Lizzy.mp3',
       introText: 'intro',
@@ -77,7 +77,7 @@ export const manifest: Map<string, levelType> = new Map([
     'level3', {
       floor: '',
       title: '',
-      backgroundImg: '/img/level3.jpg',
+      backgroundImg: '/img/L3.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+3.mp3',
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/3.+Welcome+to+the+third+floor_Zoe.mp3',
       introText: 'intro',
@@ -99,7 +99,7 @@ export const manifest: Map<string, levelType> = new Map([
     'level4', {
       floor: '',
       title: '',
-      backgroundImg: '/img/level4.jpg',
+      backgroundImg: '/img/L4.jpg',
 
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+1.mp3',
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/4.+Welcome+to+the+fourth+floor_Lizzy.mp3',
@@ -122,7 +122,7 @@ export const manifest: Map<string, levelType> = new Map([
     'level5', {
       floor: '',
       title: '',
-      backgroundImg: '/img/level5.jpg',
+      backgroundImg: '/img/L5.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+2.mp3',
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/5.+Welcome+to+the+fifth+floor_Zoe.mp3',
       introText: 'intro',
@@ -144,7 +144,7 @@ export const manifest: Map<string, levelType> = new Map([
     'level6', {
       floor: '',
       title: '',
-      backgroundImg: '/img/level6.jpg',
+      backgroundImg: '/img/L6.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+3.mp3',
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/6.+Welcome+to+the+sixth+floor_Lizzy.mp3',
       introText: 'intro',
@@ -166,7 +166,7 @@ export const manifest: Map<string, levelType> = new Map([
     'level7', {
       floor: '',
       title: '',
-      backgroundImg: '/img/level7.jpg',
+      backgroundImg: '/img/L7.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+1.mp3',
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/7.+Welcome+to+the+seventh+floor_Zoe.mp3',
       introText: 'intro',
@@ -188,7 +188,7 @@ export const manifest: Map<string, levelType> = new Map([
     'level8', {
       floor: '',
       title: '',
-      backgroundImg: '/img/level8.jpg',
+      backgroundImg: '/img/L8.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+2.mp3',
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/8.+Welcome+to+the+eighth+floor_Lizzy.mp3',
       introText: 'intro',
@@ -211,7 +211,7 @@ export const manifest: Map<string, levelType> = new Map([
     'level9', {
       floor: '',
       title: '',
-      backgroundImg: '/img/level9.jpg',
+      backgroundImg: '/img/L9.jpg',
       introSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+3.mp3',
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/9.+Welcome+to+the+ninth+floor_Zoe.mp3',
       introText: 'intro',

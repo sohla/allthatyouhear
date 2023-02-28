@@ -69,17 +69,17 @@ playOutro(level: levelType | undefined, onOutroEnded: () => void){
         
         if(p1 && p2 && p3){
 
-          // p1 : do nothing
-          p1.volume.value = -6
+          // p1 : 
+          p1.volume.value = -11
           
           // p2
-          // p2.volume.value = 3 //-( (v.y) * 90)
+          p2.volume.value = -5 
           if(this.panners[0]){
             this.panners[0].pan.value = (v.y * 2) - 1
           }
 
           // p3
-          // p3.volume.value = 3 //-( (1 - v.y ) * 90) 
+          p3.volume.value = -5 
           if(this.panners[1]){
             this.panners[1].pan.value = ((1 - v.y) * 2) - 1
           }
