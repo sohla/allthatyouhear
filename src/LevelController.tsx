@@ -29,7 +29,7 @@ import { useDebugMode } from './App';
 import PlayersProgressBar from './PlayersProgressBar';
 
 import ReactGA from "react-ga4";
-
+import { useWakeLock } from 'react-screen-wake-lock';
 //-----------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------
@@ -60,6 +60,12 @@ const LevelController = () => {
 
   const [debug] = useDebugMode()
 
+  const { isSupported, request,  } = useWakeLock({
+    // onRequest: () => alert('Screen Wake Lock: requested!'),
+    onError: () => alert('An error: wake lock'),
+    // onRelease: () => alert('Screen Wake Lock: released!'),
+  });
+
   //-----------------------------------------------------------------------
   const getLevelTitle = (index: number) => {
     const levels = ['level1','level2','level3','level4','level5','level6','level7','level8','level9']
@@ -67,7 +73,15 @@ const LevelController = () => {
   }
   
   //-----------------------------------------------------------------------
+  useEffect( () => {
+    if(!isSupported) return
+    request()
+    console.log("wake lock requested")
+    // really bad! ignore history
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
   
+  //-----------------------------------------------------------------------
   useMemo(() => {
     
     levels.current.set('level1', new Level1(manifest.get('level1')))
@@ -189,8 +203,9 @@ const LevelController = () => {
     levels.current.get(title)?.onOrientationData(manifest.get(title), v)
   },[access, orientation, index])
 
-
+  //-----------------------------------------------------------------------
   useEffect( () => {
+    
     return () => {
       console.log("level controller unmounting...")
     }
