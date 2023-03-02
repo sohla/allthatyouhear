@@ -4,7 +4,6 @@ import { createBrowserHistory } from "history";
 import { useSwipeable } from 'react-swipeable';
 
 import { Title } from './Title';
-import { InfoIcon } from './Icons';
 import { PlayIcon } from './Icons';
 
 import { manifest } from './manifest';
@@ -30,6 +29,9 @@ import PlayersProgressBar from './PlayersProgressBar';
 
 import ReactGA from "react-ga4";
 import { useWakeLock } from 'react-screen-wake-lock';
+import About from './About';
+
+
 //-----------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------
@@ -71,15 +73,6 @@ const LevelController = () => {
     const levels = ['level1','level2','level3','level4','level5','level6','level7','level8','level9']
     return levels[index]
   }
-  
-  //-----------------------------------------------------------------------
-  useEffect( () => {
-    if(!isSupported) return
-    request()
-    console.log("wake lock requested")
-    // really bad! ignore history
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
   
   //-----------------------------------------------------------------------
   useMemo(() => {
@@ -132,17 +125,14 @@ const LevelController = () => {
 
     const title = getLevelTitle(index)
     const level = manifest.get(title)
-
     
     levels.current.get(title)?.playIntro(level, () => {
 
       levels.current.get(title)?.playTracks(level, () => {
-
         
         setOutroPlaying(true)
         
         levels.current.get(title)?.playOutro(level, () => {
-
 
           setTracksLoaded(false)
           setOutroLoaded(false)
@@ -280,6 +270,9 @@ const LevelController = () => {
       if(webaudio) return
       await start()
       setWebAudio(true)
+      if(isSupported){
+        request()
+      }
     }
     
     return (
@@ -349,7 +342,7 @@ const LevelController = () => {
   const RenderCredits = () => {
     return (
       <div className='text-center text-black '>
-        <div className='font-bold text-4xl bg-black w-16 mx-auto h-16 pt-3 rounded-full'>🎧</div>
+        <div className='font-bold text-4xl bg-black w-14 mx-auto h-14 pt-2 rounded-full'>🎧</div>
         <div className='font-bold pt-2 pb-4'>Best experienced on headphones</div>
         <div className='text-1xl'>Music & Sound Design by Biddy Connor</div>
         <div className=''>Curated by Rachael Paintin</div>
@@ -361,6 +354,7 @@ const LevelController = () => {
          
     )
   }
+
   //-----------------------------------------------------------------------
   const RenderNextButton = () => {
 
@@ -407,6 +401,8 @@ const LevelController = () => {
         className="bg-cover bg-center fixed top-0 w-full h-screen justify-center items-center transition-opacity duration-1000 ease-out opacity-0" 
         style={{opacity:bg_class}}>
         
+        { index === 0 && <About /> }
+        
         { !outroPlaying && <Title floor={String(manifest.get(title)?.floor)} title={String(manifest.get(title)?.title)}/> }
 
         { index === 0 && !isPlaying && <RenderCredits />}
@@ -416,11 +412,10 @@ const LevelController = () => {
         { (debug.isOn && tracksLoaded && index < 8) && <RenderNextButton /> }
 
         <PlayersProgressBar ready={isPlaying} level={manifest.get(title)} baseLevel={levels.current.get(title)!} />
-        
-        { index === 0 && <InfoIcon color={"MidnightBlue"}/> }
-        
+
      </div>
     </div>
   )
 }
 export default LevelController;
+
