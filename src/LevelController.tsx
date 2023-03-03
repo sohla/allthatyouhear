@@ -167,9 +167,9 @@ const LevelController = () => {
   },[index])
 
   //-----------------------------------------------------------------------
-  useEffect(() => {
-    requestAccess()
-  },[requestAccess])
+  // useEffect(() => {
+  //   requestAccess()
+  // },[requestAccess])
   // useEffect( () => {
     
   //   if(access){
@@ -282,6 +282,8 @@ const LevelController = () => {
       if(webaudio) return
       await start()
       setWebAudio(true)
+      requestAccess()
+
       if(isSupported){
         request()
       }
