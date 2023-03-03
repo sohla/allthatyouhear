@@ -188,6 +188,7 @@ const LevelController = () => {
     if(!access) return
     
     let v = orientationToVec3(orientation!, 1)
+    console.log(v)
     const title = getLevelTitle(index)
 
     levels.current.get(title)?.onOrientationData(manifest.get(title), v)
