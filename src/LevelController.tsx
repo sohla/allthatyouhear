@@ -42,8 +42,8 @@ const LevelController = () => {
 
   const [webaudio, setWebAudio] = useState(false)
 
-  const [access, setAccess] = useState(false)
-  const { orientation, requestAccess, revokeAccess, error } = useDeviceOrientation()
+  // const [access, setAccess] = useState(false)
+  const { orientation, requestAccess, error } = useDeviceOrientation()
 
   const [isPlaying, setIsPlaying] = useState(false)
 
@@ -167,14 +167,17 @@ const LevelController = () => {
   },[index])
 
   //-----------------------------------------------------------------------
-  useEffect( () => {
+  useEffect(() => {
+    requestAccess()
+  },[requestAccess])
+  // useEffect( () => {
     
-    if(access){
-      requestAccess()
-    }else{
-      revokeAccess()
-    }
-  },[access, requestAccess, revokeAccess])
+  //   if(access){
+  //     requestAccess()
+  //   }else{
+  //     revokeAccess()
+  //   }
+  // },[access, requestAccess, revokeAccess])
 
   //-----------------------------------------------------------------------
   useEffect( () => {
@@ -184,16 +187,24 @@ const LevelController = () => {
   
   
   //-----------------------------------------------------------------------
-  useEffect( () => {
-    if(!access) return
+  // useEffect( () => {
+  //   // if(!access) return
     
+  //   let v = orientationToVec3(orientation!, 1)
+  //   console.log(v)
+  //   const title = getLevelTitle(index)
+  //   levels.current.get(title)?.onOrientationData(manifest.get(title), v)
+  // },[orientation, index])
+  const OrientationData = () => {
+
     let v = orientationToVec3(orientation!, 1)
     console.log(v)
     const title = getLevelTitle(index)
-
     levels.current.get(title)?.onOrientationData(manifest.get(title), v)
-  },[access, orientation, index])
-
+    return (
+      <></>
+    )
+  }
   //-----------------------------------------------------------------------
   useEffect( () => {
     
@@ -280,7 +291,7 @@ const LevelController = () => {
       <div>
         {
           go ? <GoButton title='Tap to begin' onButton={ () => { 
-            setAccess(true) //MUST call this from here. sigh!
+            // setAccess(true) //MUST call this from here. sigh!
             AccessButton()
           }} />
           :
@@ -300,7 +311,7 @@ const LevelController = () => {
         {
           go ? <GoButton title='Tap to begin this level' onButton={ () => {
         
-          setAccess(true) //MUST call this from here. sigh!
+          // setAccess(true) //MUST call this from here. sigh!
           setIsPlaying(true)
 
           if(index > 0) {
@@ -414,6 +425,7 @@ const LevelController = () => {
 
         <PlayersProgressBar ready={isPlaying} level={manifest.get(title)} baseLevel={levels.current.get(title)!} />
 
+      <OrientationData />
      </div>
     </div>
   )
