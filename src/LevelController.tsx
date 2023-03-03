@@ -315,7 +315,8 @@ const LevelController = () => {
         {
           go ? <GoButton title='Tap to begin this level' onButton={ () => {
         
-          // setAccess(true) //MUST call this from here. sigh!
+            requestAccess()
+            setAccess(true) //MUST call this from here. sigh!
           setIsPlaying(true)
 
           if(index > 0) {
