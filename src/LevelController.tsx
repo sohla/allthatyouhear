@@ -282,7 +282,6 @@ const LevelController = () => {
       if(webaudio) return
       await start()
       setWebAudio(true)
-      requestAccess()
 
       if(isSupported){
         request()
@@ -294,6 +293,8 @@ const LevelController = () => {
         {
           go ? <GoButton title='Tap to begin' onButton={ () => { 
             // setAccess(true) //MUST call this from here. sigh!
+            requestAccess()
+
             AccessButton()
           }} />
           :
