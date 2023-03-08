@@ -94,70 +94,12 @@ browser back button (https://stackoverflow.com/questions/55966533/show-alert-on-
   for f in *.jpg; do ffmpeg -i "$f" -vf scale=1200:-1 "converted/${f%%.jpg}.jpg"; done;   
 
 
-info opens modal : npm i react-responsive-modal
+https://atyh.s3.ap-southeast-2.amazonaws.com/Acknowledgement+of+Country+2023_MakeYourWayLevel2.mp3
 
-*/
+level1:
+swap order : 
+outro image : stairs 
+motion bug : check -> safari version ?
+copy info page
 
-/*
-Skip to Main Content
-AUDIO EXPERIENCE FAQ
-FAQ
-This audio experience is designed to be listened to from the Nicholas Building, 
-
-Melbourne, VIC, Australia. The Nicholas building is home to a community of over 200 artists, creatives and many independent enterprises. Many studios are private and not open to the public. We respectfully ask that you keep noise to a minimum.
-
-What equipment do I need to access the audio experience? 
-
-You will require a smart phone with QR-code-reader capability, mobile data and your own set of personal headphones. 
-
-​
-
-How do I access the audio experience?
-
-Use your smart phone to scan the QR codes adjacent to the lifts inside the building. Not every floor will have a QR code and soundtrack associated with it.
- 
-
-Where do I begin?
-
-The first QR code is located adjacent to the lifts on the first floor of the Nicholas Building, opposite Flinders Lane Gallery.  Look for the codes pasted up on the red tiled walls. 
-
-​
-
-What happens when I walk around?
-
-The audio experience has been specially designed across more than one layer of sound. When you gently move your phone around the room(on select floors), you will hear the second soundtrack. These layers are designed to be listened to simultaneously as you walk through the building.
-
-​
-
-Do I have to keep moving my phone?
-
-In short, no. As you walk through the space carrying your phone, you will notice that different soundtracks play automatically. If you want to experience more, pause and experiment with slowly moving your phone around the room as if you are standing on a pivot point.
-
-​
-
-How many soundtracks are there?
-
-There are soundtracks on Level 1 - 4. This work is dynamic and ever evolving. Over the 6 months new soundtracks will be added to additional floors. 
-
-​
-
-What time does the building close?
-
-The Nicholas Building is open from 8am - 5pm daily. 
-
-​
-
-How can I listen from home?
-
-At this stage, the audio experience is only available in the building.
-
-​
-
-All That You Hear
-
-hello@allthatyouhear.au
-
-©2022 by All That You Hear.
-
-​
 */

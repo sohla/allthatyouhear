@@ -57,7 +57,6 @@ playOutro(level: levelType | undefined, onOutroEnded: () => void){
         const p2 = this.players.tonePlayers.get(t2) 
         
         if(p1&&p2){
-
           p1.volume.value = -( (1-v.y ) * (1-v.y ) * 220) 
           p2.volume.value = -( (v.y) * (v.y) * 220) + 9
         }
