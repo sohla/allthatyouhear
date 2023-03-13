@@ -259,24 +259,29 @@ const LevelController = () => {
   }) => {
 
     const handlers = useSwipeable({
-      onTouchStartOrOnMouseDown: () => {props.onButton()},
+      onTouchStartOrOnMouseDown: () => {
+        requestAccess().then( v => {
+          setAccess(true)
+        })
+        props.onButton()
+      },
       // onTouchEndOrOnMouseUp: () => {props.onButton()},
-      touchEventOptions: {passive: false},
+      touchEventOptions: {passive: true},
     })
 
     return (
       <div className="fixed  text-black bottom-0 font-bold w-full self-center text-2xl text-center">
-          <button onClick={ () => {
+          {/* <button onClick={ () => {
             requestAccess().then( v => {
               setAccess(true)
             })
             props.onButton()
           }
-        }> 
-        {/* <div className=" flex justify-center items-center " {...handlers}> */}
+        }>  */}
+        <div className=" flex justify-center items-center " {...handlers}>
           <PlayIcon color="MidnightBlue"/>
-        {/* </div>  */}
-          </button>
+        </div> 
+          {/* </button> */}
         <div className="pb-4 opacity-80">{props.title}</div>
       </div>
     )
