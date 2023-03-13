@@ -266,9 +266,20 @@ const LevelController = () => {
 
     return (
       <div className="fixed  text-black bottom-0 font-bold w-full self-center text-2xl text-center">
-        <div className=" flex justify-center items-center " {...handlers}>
+          <button onTouchStart={ () => {
+            console.log("B")
+            requestAccess().then( v => {
+              console.log("request device orientation : ", v)
+              setAccess(true)
+            })
+      
+            props.onButton()
+          }
+        }> 
+        {/* <div className=" flex justify-center items-center " {...handlers}> */}
           <PlayIcon color="MidnightBlue"/>
-        </div> 
+        {/* </div>  */}
+          </button>
         <div className="pb-4 opacity-80">{props.title}</div>
       </div>
     )
@@ -286,11 +297,6 @@ const LevelController = () => {
       if(isSupported){
         request()
       }
-
-      requestAccess().then( v => {
-        console.log("request device orientation : ", v)
-        setAccess(true)
-      })
 
     }
     
