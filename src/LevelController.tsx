@@ -266,7 +266,7 @@ const LevelController = () => {
         props.onButton()
       },
       // onTouchEndOrOnMouseUp: () => {props.onButton()},
-      touchEventOptions: {passive: true},
+      touchEventOptions: {passive: false},
     })
 
     return (
