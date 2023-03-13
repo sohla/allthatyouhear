@@ -286,6 +286,12 @@ const LevelController = () => {
       if(isSupported){
         request()
       }
+
+      requestAccess().then( v => {
+        console.log("request device orientation : ", v)
+        setAccess(true)
+      })
+
     }
     
     return (
@@ -293,11 +299,6 @@ const LevelController = () => {
         {
           go ? <GoButton title='Tap to begin' onButton={ () => { 
 
-            requestAccess().then( v => {
-              console.log("request device orientation : ", v)
-              setAccess(true)
-            })
-        
             AccessButton()
           }} />
           :
@@ -317,11 +318,6 @@ const LevelController = () => {
         {
           go ? <GoButton title='Tap to begin this level' onButton={ () => {
         
-            requestAccess().then( v => {
-              console.log("request device orientation : ", v)
-              setAccess(true)
-            })
-
             setIsPlaying(true)
 
           if(index > 0) {
