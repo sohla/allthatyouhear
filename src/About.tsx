@@ -65,8 +65,8 @@ const About = () => {
                   <div className="mt-2">
                     <p className="text-1xl ">
                     This audio experience is designed to be listened to from the Nicholas Building, 
-                    Melbourne, VIC, Australia. The Nicholas building is home to a community of over 200 artists, creatives and many independent enterprises. 
-                    Many studios are private and not open to the public. 
+                    Melbourne, VIC, Australia. The Nicholas building is home to a community of over 200 artists, 
+                    creatives and many independent enterprises. Many studios are private and not open to the public. 
                     We respectfully ask that you keep noise to a minimum.
                     </p>
 
@@ -74,32 +74,40 @@ const About = () => {
                     What equipment do I need to access the audio experience? 
                     </p>
                     <p>
-                    You will require a smart phone with QR-code-reader capability, mobile data and your own set of personal headphones. 
+                    You will require a smart phone with mobile data (for internet access) and your own set of personal headphones. 
                     </p>
                     <p className=" italic font-bold pt-2 ">
                     How do I access the audio experience?
                     </p>
-                    Use your smart phone to scan the QR codes adjacent to the lifts inside the building. Not every floor will have a QR code and soundtrack associated with it.
+                    Once you are on location at the Nicholas building use this link to access the audio tracks. 
                     <p className=" italic font-bold pt-2 ">
                     Where do I begin?
                     </p>
-                    The first QR code is located adjacent to the lifts on the first floor of the Nicholas Building, opposite Flinders Lane Gallery.  Look for the codes pasted up on the red tiled walls. 
+                    The experience begins from Level 1 of The Nicholas Building outside of Flinders Lane Gallery. 
                     <p className=" italic font-bold pt-2 ">
                     What happens when I walk around?
                     </p>
-                    The audio experience has been specially designed across more than one layer of sound. When you gently move your phone around the room(on select floors), you will hear the second soundtrack. These layers are designed to be listened to simultaneously as you walk through the building.
+                    The audio experience has been specially designed across more than one layer of sound. 
+                    When you gently move your phone around the room(on select floors), you will hear the second soundtrack. 
+                    These layers are designed to be listened to simultaneously as you walk through the building.
                     <p className=" italic font-bold pt-2 ">
                     Do I have to keep moving my phone?
                     </p>
-                    In short, no. As you walk through the space carrying your phone, you will notice that different soundtracks play automatically. If you want to experience more, pause and experiment with slowly moving your phone around the room as if you are standing on a pivot point.
+                    In short, no. As you walk through the space carrying your phone, you will notice that 
+                    different soundtracks play automatically. If you want to experience more, pause and 
+                    experiment with slowly moving your phone around the room as if you are standing on a pivot point.
                     <p className=" italic font-bold pt-2 ">
                     How many soundtracks are there?
                     </p>
-                    There are soundtracks on Level 1 - 4. This work is dynamic and ever evolving. Over the 6 months new soundtracks will be added to additional floors. 
+                    This work is dynamic and ever evolving. There will eventually be soundtracks on levels 1-9 of the building. 
                     <p className=" italic font-bold pt-2 ">
                     What time does the building close?
                     </p>
                     The Nicholas Building is open from 8am - 5pm daily. 
+                    <p className=" italic font-bold pt-2 ">
+                    How can I listen from home?
+                    </p>
+                    The audio experience is accessed from inside the Nicholas building.
 
 
 

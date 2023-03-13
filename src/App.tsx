@@ -98,8 +98,5 @@ https://atyh.s3.ap-southeast-2.amazonaws.com/Acknowledgement+of+Country+2023_Mak
 
 level1:
 swap order : 
-outro image : stairs 
-motion bug : check -> safari version ?
-copy info page
 
 */

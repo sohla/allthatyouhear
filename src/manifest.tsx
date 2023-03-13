@@ -45,9 +45,9 @@ export const manifest: Map<string, levelType> = new Map([
       introVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Level+2+Introduction.mp3',
       introText: 'intro',
       outroSound: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Tuning+Fork+1.mp3',
-      outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/Acknowledgement+of+Country+2023_MakeYourWayLevel2.mp3',
+      outroVO: 'https://atyh.s3.ap-southeast-2.amazonaws.com/MakeYourWayLevel2_Acknowledgement+of+Country+2023.mp3',
       outroText: 'Acknowledgement',
-      outroImg: '/img/flag.png',
+      outroImg: '/img/stairs3.jpg',
       tracksText: 'Introduction and Welcome',
       tracks: [
         'https://atyh.s3.ap-southeast-2.amazonaws.com/Level+2_+WELCOME+TO+COUNTRY+06012023.mp3',
