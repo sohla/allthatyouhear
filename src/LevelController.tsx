@@ -167,44 +167,19 @@ const LevelController = () => {
   },[index])
 
   //-----------------------------------------------------------------------
-  // useEffect(() => {
-  // },[requestAccess])
-  
-  // useEffect( () => {
-    
-  //   if(access){
-  //     requestAccess()
-  //   }else{
-  //     revokeAccess()
-  //   }
-  // },[access, requestAccess, revokeAccess])
-
-  //-----------------------------------------------------------------------
   useEffect( () => {
     if(!error) return
     console.log("access err:",error?.message)
   },[error])
   
-  
   //-----------------------------------------------------------------------
   useEffect( () => {
     if(!access) return
-    
     let v = orientationToVec3(orientation!, 1)
-    console.log(v)
     const title = getLevelTitle(index)
     levels.current.get(title)?.onOrientationData(manifest.get(title), v)
   },[access, orientation, index])
-  // const OrientationData = () => {
-
-  //   let v = orientationToVec3(orientation!, 1)
-  //   console.log(v)
-  //   const title = getLevelTitle(index)
-  //   levels.current.get(title)?.onOrientationData(manifest.get(title), v)
-  //   return (
-  //     <></>
-  //   )
-  // }
+  
   //-----------------------------------------------------------------------
   useEffect( () => {
     
@@ -240,7 +215,7 @@ const LevelController = () => {
   const RenderPlaying = () => {
     return (
       <div className="bg-black bg-opacity-0 text-black font-bold w-full self-center text-2xl text-center fixed bottom-4">
-        { !outroPlaying && (index > 0) ? 
+        { !outroPlaying && (index > 0) && access ? 
           <div className="h-20 opacity-80 bg-[url('../public/img/MovingPhone_SlowBlack.gif')] bg-contain bg-center bg-no-repeat"></div> : 
           <div></div>
         }
@@ -261,11 +236,10 @@ const LevelController = () => {
     const handlers = useSwipeable({
       onTouchStartOrOnMouseDown: () => {
         requestAccess().then( v => {
-          setAccess(true)
+          // setAccess(true)
         })
         props.onButton()
       },
-      // onTouchEndOrOnMouseUp: () => {props.onButton()},
       touchEventOptions: {passive: true},
     })
 
