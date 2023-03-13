@@ -67,7 +67,7 @@ function Home() {
     <div>
       <div className="grid grid-rows-3 gap-0 h-screen text-center text-4xl">
         <div className='text-black pt-8'>All That You Hear</div>
-        <div className='text-black'>v6.1</div>
+        <div className='text-black'>v6.2</div>
 
         <RenderDebug />
         <Link className="bg-slate-900 text-white font-bold py-20  border-black text-2xl" to="/levels">
