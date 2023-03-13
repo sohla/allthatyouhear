@@ -267,12 +267,9 @@ const LevelController = () => {
     return (
       <div className="fixed  text-black bottom-0 font-bold w-full self-center text-2xl text-center">
           <button onClick={ () => {
-            console.log("B")
             requestAccess().then( v => {
-              console.log("request device orientation : ", v)
-              // setAccess(true)
+              setAccess(true)
             })
-      
             props.onButton()
           }
         }> 
