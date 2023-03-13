@@ -168,8 +168,8 @@ const LevelController = () => {
 
   //-----------------------------------------------------------------------
   // useEffect(() => {
-  //   requestAccess()
   // },[requestAccess])
+  
   // useEffect( () => {
     
   //   if(access){
@@ -292,10 +292,12 @@ const LevelController = () => {
       <div>
         {
           go ? <GoButton title='Tap to begin' onButton={ () => { 
-            requestAccess()
 
-            setAccess(true) //MUST call this from here. sigh!
-
+            requestAccess().then( v => {
+              console.log("request device orientation : ", v)
+              setAccess(true)
+            })
+        
             AccessButton()
           }} />
           :
@@ -315,9 +317,12 @@ const LevelController = () => {
         {
           go ? <GoButton title='Tap to begin this level' onButton={ () => {
         
-            requestAccess()
-            setAccess(true) //MUST call this from here. sigh!
-          setIsPlaying(true)
+            requestAccess().then( v => {
+              console.log("request device orientation : ", v)
+              setAccess(true)
+            })
+
+            setIsPlaying(true)
 
           if(index > 0) {
             const title = getLevelTitle(index - 1)
