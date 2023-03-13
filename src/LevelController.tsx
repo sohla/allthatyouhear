@@ -236,7 +236,7 @@ const LevelController = () => {
     const handlers = useSwipeable({
       onTouchStartOrOnMouseDown: () => {
         requestAccess().then( v => {
-          // setAccess(true)
+          setAccess(true)
         })
         props.onButton()
       },
