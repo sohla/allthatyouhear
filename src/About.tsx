@@ -109,11 +109,39 @@ const About = () => {
                     </p>
                     The audio experience is accessed from inside the Nicholas building.
 
+                    <div className="pt-8 flex justify-center items-centet">
+                      <img src="/img/ATYH_LOGO.png" alt="logo" width="50%"></img>
+                    </div>
 
 
-                    <div className="font-bold pt-2 underline text-center">
-                    Email :
-                      <a href="mailto:/hello@allthatyouhear.au"> hello@allthatyouhear.au</a>
+                    <p className="font-bold pt-8 text-center ">
+                    Thank you to all the tenants of the Nicholas Building, past, present and future. Thank you for keeping the city creative. 
+                    </p>
+
+                    <a className="font-bold pt-8 text-center underline "
+                    href="https://www.nicholasbuilding.org.au/directory">www.nicholasbuilding.org.au/directory</a>
+
+                    
+                    <p className="font-bold pt-8 text-center italic">
+                    Special thanks to the following people for sharing your stories:
+                    </p>
+
+                    <p className="text-center">
+                    Anna Varendorf, Bryan Graydon, Dario Vacirca, Emile Zile, Gail Smith, Ian George, Isobel Knowles, Jason Patterson, Jeremy Ley, 
+                    Jose Zarpan, Julieanne Axford, Lou Klerks, Louise McDonald, Nell Fraser, Robyn Annear, Robyn Bunting, Stephen McLauglin, 
+                    Van Sowerine, Victoria Mason, Vikkhi Blackthorne
+                    </p>
+
+                    <p className="font-bold pt-8 text-center ">
+                    Supported by :
+                    </p>
+
+                    <img src="/img/ATYH_LogoGrid-01.jpg" alt="support" width="500" height="600"></img>
+
+
+                    <div className="font-bold pt-6 text-center">
+                    Email to
+                      <a className="underline" href="mailto:/hello@allthatyouhear.au"> hello@allthatyouhear.au</a>
                     </div>
 
                   </div>

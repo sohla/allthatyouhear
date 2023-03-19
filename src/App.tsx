@@ -52,8 +52,8 @@ export default function App() {
       
       <MobileView  className="bg-slate-300 h-screen">
         <Routes>
-          <Route path="levels" element={<LevelController />} /> 
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<LevelController />} /> 
+          {/* <Route path="*" element={<Home />} /> */}
         </Routes>
       </MobileView>
 
